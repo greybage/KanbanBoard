@@ -10,13 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class Form2 : Form
+    public partial class Add : Form
     {
-        public static Form2 instance;
-        public Form2()
+        public static Add instance;
+        private Form previousForm;
+        
+
+        public Add(Form previousForm)
         {
             InitializeComponent();
-            instance = this;
+            this.previousForm = previousForm;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -31,8 +34,13 @@ namespace WindowsFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
-            form.Show();
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            previousForm.Show();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp
 {
-    partial class Form2
+    partial class Add
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -126,13 +132,77 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form2
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.SystemColors.Control;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(32, 315);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 25);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Priority";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.SystemColors.Control;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(32, 360);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 25);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Stage";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.Control;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(32, 406);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 25);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Category";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(130, 360);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(136, 30);
+            this.listBox2.TabIndex = 20;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(134, 315);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(136, 30);
+            this.listBox1.TabIndex = 20;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(130, 401);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(136, 30);
+            this.listBox3.TabIndex = 21;
+            // 
+            // Add
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(980, 550);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -142,8 +212,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Name = "Form2";
-            this.Text = "Add";
+            this.Name = "Add";
+            this.Text = "Add Task";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -161,5 +231,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp
 {
-    partial class Form1
+    partial class MainList
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -161,6 +161,7 @@
             this.LogOutbtn.TabIndex = 16;
             this.LogOutbtn.Text = "Log Out";
             this.LogOutbtn.UseVisualStyleBackColor = true;
+            this.LogOutbtn.Click += new System.EventHandler(this.LogOutbtn_Click);
             // 
             // button2
             // 
@@ -170,10 +171,10 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(167, 35);
             this.button2.TabIndex = 17;
-            this.button2.Text = "Add Category";
+            this.button2.Text = " Categories";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // MainList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,7 +193,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.to);
-            this.Name = "Form1";
+            this.Name = "MainList";
             this.Text = "TaskBoardie";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

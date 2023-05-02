@@ -10,13 +10,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class Form1 : Form
+    public partial class MainList : Form
     {
-        public static Form1 instance;
-        public Form1()
+        public static MainList instance;
+        
+        private Form previousForm;
+        public MainList(Form previousForm)
         {
             InitializeComponent();
-            instance = this;
+            this.previousForm = previousForm;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -36,8 +38,9 @@ namespace WindowsFormsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
-            form.Show();
+            Add add = new Add(this);
+            add.Show();
+            this.Hide();
         }
 
         private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,6 +51,12 @@ namespace WindowsFormsApp
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void LogOutbtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            previousForm.Show();
         }
     }
 

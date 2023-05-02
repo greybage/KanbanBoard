@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp;
 
 namespace WindowsFormsApp
 {
     public partial class Login : Form
     {
-        public Login()
+
+        private Form previousForm;
+        public Login(Form previousForm)
         {
             InitializeComponent();
+            this.previousForm = previousForm;
         }
+
 
         private void Login_Load(object sender, EventArgs e)
         {
@@ -35,6 +40,13 @@ namespace WindowsFormsApp
         private void Registerbtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MainList mainList = new MainList(this);
+            mainList.Show();
+            this.Hide();
         }
     }
 }
