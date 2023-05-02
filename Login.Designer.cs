@@ -34,6 +34,8 @@ namespace WindowsFormsApp
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Loginbtn = new System.Windows.Forms.Button();
+            this.Registerbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,11 +74,32 @@ namespace WindowsFormsApp
             this.textBox2.TabIndex = 3;
             this.textBox2.UseSystemPasswordChar = true;
             // 
+            // Loginbtn
+            // 
+            this.Loginbtn.Location = new System.Drawing.Point(316, 227);
+            this.Loginbtn.Name = "Loginbtn";
+            this.Loginbtn.Size = new System.Drawing.Size(100, 23);
+            this.Loginbtn.TabIndex = 4;
+            this.Loginbtn.Text = "Login";
+            this.Loginbtn.UseVisualStyleBackColor = true;
+            // 
+            // Registerbtn
+            // 
+            this.Registerbtn.Location = new System.Drawing.Point(316, 257);
+            this.Registerbtn.Name = "Registerbtn";
+            this.Registerbtn.Size = new System.Drawing.Size(100, 23);
+            this.Registerbtn.TabIndex = 5;
+            this.Registerbtn.Text = "Register";
+            this.Registerbtn.UseVisualStyleBackColor = true;
+            this.Registerbtn.Click += new System.EventHandler(this.Registerbtn_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Registerbtn);
+            this.Controls.Add(this.Loginbtn);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -97,5 +120,7 @@ namespace WindowsFormsApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button Loginbtn;
+        private System.Windows.Forms.Button Registerbtn;
     }
 }

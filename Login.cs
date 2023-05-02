@@ -31,5 +31,10 @@ namespace WindowsFormsApp
         {
 
         }
+
+        private void Registerbtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

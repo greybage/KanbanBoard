@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp
 {
-    public partial class Form3 : Form
+    public partial class Register : Form
     {
-        public Form3()
+        public Register()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

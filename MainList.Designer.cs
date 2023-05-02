@@ -37,6 +37,10 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox4 = new System.Windows.Forms.ListBox();
+            this.MyTasksbtn = new System.Windows.Forms.Button();
+            this.TeamTasksbtn = new System.Windows.Forms.Button();
+            this.LogOutbtn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // to
@@ -56,7 +60,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(260, 172);
+            this.label1.Location = new System.Drawing.Point(179, 172);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 31);
             this.label1.TabIndex = 1;
@@ -68,7 +72,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(747, 172);
+            this.label2.Location = new System.Drawing.Point(495, 172);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 31);
             this.label2.TabIndex = 2;
@@ -78,11 +82,11 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(40, 27);
+            this.button1.Location = new System.Drawing.Point(724, 27);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 99);
+            this.button1.Size = new System.Drawing.Size(167, 53);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Add";
+            this.button1.Text = "Add Task";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -91,7 +95,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(505, 172);
+            this.label3.Location = new System.Drawing.Point(338, 172);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(151, 31);
             this.label3.TabIndex = 9;
@@ -108,7 +112,7 @@
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(266, 223);
+            this.listBox2.Location = new System.Drawing.Point(185, 223);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(133, 264);
             this.listBox2.TabIndex = 11;
@@ -116,7 +120,7 @@
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(511, 223);
+            this.listBox3.Location = new System.Drawing.Point(344, 223);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(133, 264);
             this.listBox3.TabIndex = 12;
@@ -124,11 +128,50 @@
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(724, 223);
+            this.listBox4.Location = new System.Drawing.Point(492, 223);
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(133, 264);
             this.listBox4.TabIndex = 13;
             this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+            // 
+            // MyTasksbtn
+            // 
+            this.MyTasksbtn.Location = new System.Drawing.Point(631, 27);
+            this.MyTasksbtn.Name = "MyTasksbtn";
+            this.MyTasksbtn.Size = new System.Drawing.Size(75, 23);
+            this.MyTasksbtn.TabIndex = 14;
+            this.MyTasksbtn.Text = "My tasks";
+            this.MyTasksbtn.UseVisualStyleBackColor = true;
+            this.MyTasksbtn.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // TeamTasksbtn
+            // 
+            this.TeamTasksbtn.Location = new System.Drawing.Point(631, 57);
+            this.TeamTasksbtn.Name = "TeamTasksbtn";
+            this.TeamTasksbtn.Size = new System.Drawing.Size(75, 23);
+            this.TeamTasksbtn.TabIndex = 15;
+            this.TeamTasksbtn.Text = "Teams tasks";
+            this.TeamTasksbtn.UseVisualStyleBackColor = true;
+            // 
+            // LogOutbtn
+            // 
+            this.LogOutbtn.Location = new System.Drawing.Point(12, 12);
+            this.LogOutbtn.Name = "LogOutbtn";
+            this.LogOutbtn.Size = new System.Drawing.Size(75, 23);
+            this.LogOutbtn.TabIndex = 16;
+            this.LogOutbtn.Text = "Log Out";
+            this.LogOutbtn.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button2.Location = new System.Drawing.Point(724, 86);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(167, 35);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Add Category";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -136,6 +179,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(931, 519);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.LogOutbtn);
+            this.Controls.Add(this.TeamTasksbtn);
+            this.Controls.Add(this.MyTasksbtn);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
@@ -164,6 +211,10 @@
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.Button MyTasksbtn;
+        private System.Windows.Forms.Button TeamTasksbtn;
+        private System.Windows.Forms.Button LogOutbtn;
+        private System.Windows.Forms.Button button2;
     }
 }
 
