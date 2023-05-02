@@ -30,22 +30,23 @@ namespace WindowsFormsApp
         private void InitializeComponent()
         {
             this.performanceCounter1 = new System.Diagnostics.PerformanceCounter();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLogin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.Loginbtn = new System.Windows.Forms.Button();
             this.Registerbtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.performanceCounter1)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtLogin
             // 
-            this.textBox1.Location = new System.Drawing.Point(316, 156);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtLogin.Location = new System.Drawing.Point(316, 156);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(100, 20);
+            this.txtLogin.TabIndex = 0;
+            this.txtLogin.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -67,13 +68,13 @@ namespace WindowsFormsApp
             this.label3.Text = "password";
             this.label3.Click += new System.EventHandler(this.password_Click);
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(316, 200);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.UseSystemPasswordChar = true;
+            this.txtPassword.Location = new System.Drawing.Point(316, 200);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // Loginbtn
             // 
@@ -83,6 +84,7 @@ namespace WindowsFormsApp
             this.Loginbtn.TabIndex = 4;
             this.Loginbtn.Text = "Login";
             this.Loginbtn.UseVisualStyleBackColor = true;
+            this.Loginbtn.Click += new System.EventHandler(this.Loginbtn_Click);
             // 
             // Registerbtn
             // 
@@ -112,10 +114,10 @@ namespace WindowsFormsApp
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Registerbtn);
             this.Controls.Add(this.Loginbtn);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtLogin);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -128,10 +130,10 @@ namespace WindowsFormsApp
         #endregion
 
         private System.Diagnostics.PerformanceCounter performanceCounter1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button Loginbtn;
         private System.Windows.Forms.Button Registerbtn;
         private System.Windows.Forms.Button button1;
