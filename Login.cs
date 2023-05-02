@@ -56,28 +56,34 @@ namespace WindowsFormsApp
             string password = txtPassword.Text;
 
             // połączenie z bazą danych SQLite
-            string connectionString = "Data Source=users.db;Version=3;";
-            SQLiteConnection connection = new SQLiteConnection(connectionString);
-            connection.Open();
-
-            // zapytanie SQL w celu pobrania danych użytkownika o podanym loginie i haśle
-            string query = $"SELECT * FROM users WHERE login='{login}' AND password='{password}'";
-            SQLiteCommand command = new SQLiteCommand(query, connection);
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            // jeśli istnieje użytkownik o podanym loginie i haśle, otwórz okno "MainList"
-            if (reader.HasRows)
+            string connectionString = "Data Source=Users.db;Version=3;";
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
-                MainList mainList = new MainList(this);
-                mainList.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Nieprawidłowy login lub hasło");
-            }
+                connection.Open();
 
-            connection.Close();
+                // zapytanie SQL w celu pobrania danych użytkownika o podanym loginie i haśle
+                string query = "SELECT * FROM users WHERE login=@login AND password=@password";
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@login", login);
+                    command.Parameters.AddWithValue("@password", password);
+
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        // jeśli istnieje użytkownik o podanym loginie i haśle, otwórz okno "MainList"
+                        if (reader.HasRows)
+                        {
+                            MainList mainList = new MainList(this);
+                            mainList.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nieprawidłowy login lub hasło");
+                        }
+                    }
+                }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
