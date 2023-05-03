@@ -1,0 +1,101 @@
+﻿„WindowsFormsApp.exe” (Win32): załadowano „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\WindowsFormsApp.exe”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\ntdll.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\mscoree.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\kernel32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\KernelBase.dll”. 
+Wątek 0x2450 zakończył działanie z kodem 0 (0x0).
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\advapi32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\msvcrt.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\sechost.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\rpcrt4.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscoreei.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\shlwapi.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\kernel.appcore.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\version.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\Framework\v4.0.30319\clr.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\user32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\win32u.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\vcruntime140_clr0400.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\ucrtbase_clr0400.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\gdi32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\gdi32full.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\msvcp_win.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\ucrtbase.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\imm32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\combase.dll”. 
+„WindowsFormsApp.exe” (Win32): zwolniono „C:\Windows\SysWOW64\combase.dll”
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\mscorlib\a403a0b75e95c07da2caa7f780446a62\mscorlib.ni.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: DefaultDomain): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_32\mscorlib\v4.0_4.0.0.0__b77a5c561934e089\mscorlib.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\ole32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\combase.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\bcryptprimitives.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\uxtheme.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: DefaultDomain): załadowano „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\WindowsFormsApp.exe”. Symbole zostały załadowane.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\Framework\v4.0.30319\clrjit.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\oleaut32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System\920e3d1d70447c3c10e69e6df0766568\System.ni.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Windows.Forms\c0a9c626d91460a624ac1a5f89f0b4a8\System.Windows.Forms.ni.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c561934e089\System.Windows.Forms.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System\v4.0_4.0.0.0__b77a5c561934e089\System.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Drawing\fe4f7fb577b398b290c2d5d25fed0ad8\System.Drawing.ni.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Drawing\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Drawing.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Core\45a9a2a2deda365165595326f2f13be6\System.Core.ni.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Configuration\bf1f4d743828bbf720baf57f6a37ce02\System.Configuration.ni.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Configuration\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.Configuration.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Core\v4.0_4.0.0.0__b77a5c561934e089\System.Core.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Xml\2062ed810929ec0e33254c02b0c61bb4\System.Xml.ni.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\System.Xml\v4.0_4.0.0.0__b77a5c561934e089\System.Xml.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\shell32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\windows.storage.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\wldp.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\SHCore.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\profapi.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\bcrypt.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\cryptsp.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\rsaenh.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\cryptbase.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.1110_none_c0da534e38c01f4d\comctl32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\WinSxS\x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.19041.2251_none_d9513b1fe1046fc7\GdiPlus.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\DWrite.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\msctf.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\TextShaping.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_a8625c1886757984\comctl32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\TextInputFramework.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\CoreUIComponents.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\CoreMessaging.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\ws2_32.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\WinTypes.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\ntmarta.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\WinTypes.dll”. 
+„WindowsFormsApp.exe” (Win32): zwolniono „C:\Windows\SysWOW64\WinTypes.dll”
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\System.Data.SQLite.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\System.Data.SQLite.dll”. 
+„WindowsFormsApp.exe” (Win32): zwolniono „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\System.Data.SQLite.dll”
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\System.Data.SQLite.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Data\3da56a474ce100ea2538c514ba35d0cc\System.Data.ni.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\crypt32.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_32\System.Data\v4.0_4.0.0.0__b77a5c561934e089\System.Data.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Transactions\e866c0216a4ad45c5b16d8bd70bd92c7\System.Transactions.ni.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_32\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_32\System.Transactions\v4.0_4.0.0.0__b77a5c561934e089\System.Transactions.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+Native library pre-loader is trying to load native SQLite library "C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\x86\SQLite.Interop.dll"...
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Users\szygr\Documents\GitHub\KanbanBoard\bin\Debug\x86\SQLite.Interop.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\wintrust.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\SysWOW64\msasn1.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Ente96d83b35#\6d4a378833185c0981d40388a54e6afb\System.EnterpriseServices.ni.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll”. 
+„WindowsFormsApp.exe” (Win32): zwolniono „C:\Windows\Microsoft.NET\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll”
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\assembly\NativeImages_v4.0.30319_32\System.Ente96d83b35#\6d4a378833185c0981d40388a54e6afb\System.EnterpriseServices.Wrapper.dll”. 
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll”. 
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_32\System.EnterpriseServices\v4.0_4.0.0.0__b03f5f7f11d50a3a\System.EnterpriseServices.Wrapper.dll”. Pominięto ładowanie symboli. Moduł jest zoptymalizowany i włączono opcję debugera „Tylko mój kod”.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_pl_b77a5c561934e089\mscorlib.resources.dll”. Moduł został skompilowany bez symboli.
+„WindowsFormsApp.exe” (Win32): załadowano „C:\Windows\Microsoft.NET\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_pl_b77a5c561934e089\mscorlib.resources.dll”. Moduł został skompilowany bez symboli.
+„WindowsFormsApp.exe” (Win32): zwolniono „C:\Windows\Microsoft.NET\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_pl_b77a5c561934e089\mscorlib.resources.dll”
+„WindowsFormsApp.exe” (CLR v4.0.30319: WindowsFormsApp.exe): załadowano „C:\Windows\Microsoft.Net\assembly\GAC_MSIL\mscorlib.resources\v4.0_4.0.0.0_pl_b77a5c561934e089\mscorlib.resources.dll”. Moduł został skompilowany bez symboli.
+Wątek 0x440c zakończył działanie z kodem 0 (0x0).
+Wątek 0x4570 zakończył działanie z kodem 0 (0x0).
+Wątek 0x3504 zakończył działanie z kodem 0 (0x0).
+Program „[3308] WindowsFormsApp.exe” zakończył działanie z kodem 0 (0x0).

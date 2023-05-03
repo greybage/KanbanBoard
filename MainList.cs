@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 
 namespace WindowsFormsApp
@@ -62,7 +63,28 @@ namespace WindowsFormsApp
 
         private void button2_Click(object sender, EventArgs e)
         {
+            string connectionString = "Data Source=Users.db;Version=3;";
+            string selectQuery = "SELECT * FROM Users";
 
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(selectQuery, connection))
+                {
+                    using (SQLiteDataReader reader = command.ExecuteReader())
+                    {
+                        string usersData = "";
+                        while (reader.Read())
+                        {
+                            int id = reader.GetInt32(0);
+                            string login = reader.GetString(1);
+                            string password = reader.GetString(2);
+                            usersData += $"ID: {id}, Login: {login}, Password: {password}\n";
+                        }
+                        MessageBox.Show(usersData);
+                    }
+                }
+            }
         }
 
         private void LogOutbtn_Click(object sender, EventArgs e)
