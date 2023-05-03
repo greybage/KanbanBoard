@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApp
 {
     public partial class MainList : Form
@@ -15,11 +16,22 @@ namespace WindowsFormsApp
         public static MainList instance;
         
         private Form previousForm;
-        public MainList(Form previousForm)
+        public User currentUser;
+        public User GetCurrentUser()
+        {
+            return currentUser;
+        }
+
+        public MainList(Form previousForm,Login loginForm, User user)
         {
             InitializeComponent();
             this.previousForm = previousForm;
+            currentUser = user;
+            this.loginForm = loginForm;
+
+            lblCurrentUser.Text = "Zalogowany użytkownik: " + currentUser.Login; 
         }
+        private Form loginForm;
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -55,9 +67,19 @@ namespace WindowsFormsApp
 
         private void LogOutbtn_Click(object sender, EventArgs e)
         {
+            TextBox txtPassword = (TextBox)loginForm.Controls["txtPassword"];
+            txtPassword.Text = string.Empty;
             this.Close();
             previousForm.Show();
+             
+        }
+
+        private void lblCurrentUser_Text(object sender, EventArgs e)
+        {
+            lblCurrentUser.Text = "current User: " + currentUser.Login;
+
         }
     }
 
 }
+    

@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp;
 using System.Data.SQLite;
+using System.IO;
+
 
 namespace WindowsFormsApp
 {
     public partial class Login : Form
     {
+        public TextBox TxtPassword;///{ get { return txtPassword; } }
 
         private Form previousForm;
         public Login(Form previousForm)
@@ -21,6 +24,7 @@ namespace WindowsFormsApp
             InitializeComponent();
             this.previousForm = previousForm;
         }
+
 
 
         private void Login_Load(object sender, EventArgs e)
@@ -40,15 +44,10 @@ namespace WindowsFormsApp
 
         private void Registerbtn_Click(object sender, EventArgs e)
         {
-
+          
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MainList mainList = new MainList(this);
-            mainList.Show();
-            this.Hide();
-        }
+
 
         private void Loginbtn_Click(object sender, EventArgs e)
         {
@@ -61,8 +60,8 @@ namespace WindowsFormsApp
             {
                 connection.Open();
 
-                // zapytanie SQL w celu pobrania danych użytkownika o podanym loginie i haśle
-                string query = "SELECT * FROM users WHERE login=@login AND password=@password";
+                // zapytanie SQL w celu pobrania id użytkownika o podanym loginie i haśle
+                string query = "SELECT id FROM users WHERE login=@login AND password=@password";
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@login", login);
@@ -70,12 +69,19 @@ namespace WindowsFormsApp
 
                     using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        // jeśli istnieje użytkownik o podanym loginie i haśle, otwórz okno "MainList"
+                        // jeśli istnieje użytkownik o podanym loginie i haśle, pobierz jego id i utwórz obiekt użytkownika
                         if (reader.HasRows)
                         {
-                            MainList mainList = new MainList(this);
+                            reader.Read();
+                            int id = reader.GetInt32(0);
+                            User user = new User(id, login, password);
+
+                            MainList mainList = new MainList(this,this, user)
+                            {
+                                currentUser = user
+                            };
                             mainList.Show();
-                            this.Close();
+                            this.Hide();
                         }
                         else
                         {
@@ -85,6 +91,8 @@ namespace WindowsFormsApp
                 }
             }
         }
+
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {

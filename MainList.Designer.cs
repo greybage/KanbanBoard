@@ -41,6 +41,7 @@
             this.TeamTasksbtn = new System.Windows.Forms.Button();
             this.LogOutbtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.lblCurrentUser = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // to
@@ -174,12 +175,22 @@
             this.button2.Text = " Categories";
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // lblCurrentUser
+            // 
+            this.lblCurrentUser.AutoSize = true;
+            this.lblCurrentUser.Location = new System.Drawing.Point(12, 42);
+            this.lblCurrentUser.Name = "lblCurrentUser";
+            this.lblCurrentUser.Size = new System.Drawing.Size(0, 13);
+            this.lblCurrentUser.TabIndex = 18;
+            this.lblCurrentUser.Click += new System.EventHandler(this.lblCurrentUser_Text);
+            // 
             // MainList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(931, 519);
+            this.Controls.Add(this.lblCurrentUser);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.LogOutbtn);
             this.Controls.Add(this.TeamTasksbtn);
@@ -194,7 +205,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.to);
             this.Name = "MainList";
-            this.Text = "TaskBoardie";
+            this.Text = "MainList";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -216,6 +227,7 @@
         private System.Windows.Forms.Button TeamTasksbtn;
         private System.Windows.Forms.Button LogOutbtn;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lblCurrentUser;
     }
 }
 

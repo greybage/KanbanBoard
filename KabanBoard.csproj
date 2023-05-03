@@ -103,6 +103,7 @@
     <Compile Include="Task.Designer.cs">
       <DependentUpon>Task.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +141,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Users.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Users.sqbpro" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
