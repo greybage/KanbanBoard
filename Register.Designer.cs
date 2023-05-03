@@ -29,29 +29,30 @@ namespace WindowsFormsApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.LoginSet = new System.Windows.Forms.TextBox();
+            this.PasswordSet = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.RegisterSetbtn = new System.Windows.Forms.Button();
             this.BackToLoginbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // LoginSet
             // 
-            this.textBox1.Location = new System.Drawing.Point(326, 165);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.LoginSet.Location = new System.Drawing.Point(326, 165);
+            this.LoginSet.Name = "LoginSet";
+            this.LoginSet.Size = new System.Drawing.Size(100, 20);
+            this.LoginSet.TabIndex = 0;
+            this.LoginSet.TextChanged += new System.EventHandler(this.LoginSet_TextChanged);
             // 
-            // textBox2
+            // PasswordSet
             // 
-            this.textBox2.Location = new System.Drawing.Point(326, 204);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.PasswordSet.Location = new System.Drawing.Point(326, 204);
+            this.PasswordSet.Name = "PasswordSet";
+            this.PasswordSet.Size = new System.Drawing.Size(100, 20);
+            this.PasswordSet.TabIndex = 1;
+            this.PasswordSet.UseSystemPasswordChar = true;
+            this.PasswordSet.TextChanged += new System.EventHandler(this.PasswordSet_TextChanged);
             // 
             // label1
             // 
@@ -67,35 +68,20 @@ namespace WindowsFormsApp
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(326, 188);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
+            this.label2.Text = "Password";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(326, 243);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(326, 227);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
             // 
             // RegisterSetbtn
             // 
-            this.RegisterSetbtn.Location = new System.Drawing.Point(326, 270);
+            this.RegisterSetbtn.Location = new System.Drawing.Point(326, 230);
             this.RegisterSetbtn.Name = "RegisterSetbtn";
             this.RegisterSetbtn.Size = new System.Drawing.Size(100, 23);
             this.RegisterSetbtn.TabIndex = 6;
             this.RegisterSetbtn.Text = "Register";
             this.RegisterSetbtn.UseVisualStyleBackColor = true;
+            this.RegisterSetbtn.Click += new System.EventHandler(this.RegisterSetbtn_Click);
             // 
             // BackToLoginbtn
             // 
@@ -105,6 +91,7 @@ namespace WindowsFormsApp
             this.BackToLoginbtn.TabIndex = 7;
             this.BackToLoginbtn.Text = "back";
             this.BackToLoginbtn.UseVisualStyleBackColor = true;
+            this.BackToLoginbtn.Click += new System.EventHandler(this.BackToLoginbtn_Click);
             // 
             // Register
             // 
@@ -113,12 +100,10 @@ namespace WindowsFormsApp
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.BackToLoginbtn);
             this.Controls.Add(this.RegisterSetbtn);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PasswordSet);
+            this.Controls.Add(this.LoginSet);
             this.Name = "Register";
             this.Text = "Register";
             this.ResumeLayout(false);
@@ -128,12 +113,10 @@ namespace WindowsFormsApp
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox LoginSet;
+        private System.Windows.Forms.TextBox PasswordSet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button RegisterSetbtn;
         private System.Windows.Forms.Button BackToLoginbtn;
     }

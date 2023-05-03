@@ -12,6 +12,7 @@ using System.Data.SQLite;
 using System.IO;
 
 
+
 namespace WindowsFormsApp
 {
     public partial class Login : Form
@@ -44,7 +45,9 @@ namespace WindowsFormsApp
 
         private void Registerbtn_Click(object sender, EventArgs e)
         {
-          
+            Register register = new Register (this);
+            register.Show();
+            this.Hide();
         }
 
 

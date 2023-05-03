@@ -31,7 +31,7 @@
             this.to = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Addbtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -79,17 +79,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Done";
             // 
-            // button1
+            // Addbtn
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button1.Location = new System.Drawing.Point(724, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 53);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Add Task";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Addbtn.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Addbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Addbtn.Location = new System.Drawing.Point(724, 27);
+            this.Addbtn.Name = "Addbtn";
+            this.Addbtn.Size = new System.Drawing.Size(167, 53);
+            this.Addbtn.TabIndex = 6;
+            this.Addbtn.Text = "Add Task";
+            this.Addbtn.UseVisualStyleBackColor = false;
+            this.Addbtn.Click += new System.EventHandler(this.Addbtn_Click);
             // 
             // label3
             // 
@@ -200,7 +200,7 @@
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Addbtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.to);
@@ -217,7 +217,7 @@
         private System.Windows.Forms.Label to;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Addbtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ListBox listBox2;

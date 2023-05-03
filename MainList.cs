@@ -48,7 +48,7 @@ namespace WindowsFormsApp
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Addbtn_Click(object sender, EventArgs e)
         {
             Add add = new Add(this);
             add.Show();
