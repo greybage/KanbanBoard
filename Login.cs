@@ -58,7 +58,7 @@ namespace WindowsFormsApp
             string password = txtPassword.Text;
 
             // połączenie z bazą danych SQLite
-            string connectionString = "Data Source=Users.db;Version=3;";
+            string connectionString = "Data Source=DataBase.db;Version=3;";
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();

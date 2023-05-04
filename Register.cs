@@ -31,7 +31,7 @@ namespace WindowsFormsApp
 
         private void RegisterSetbtn_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=Users.db;Version=3;";
+            string connectionString = "Data Source=DataBase.db;Version=3;";
             string login = LoginSet.Text;
             string password = PasswordSet.Text;
 
