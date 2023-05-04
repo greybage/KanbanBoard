@@ -51,7 +51,10 @@ namespace WindowsFormsApp
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
-            Add add = new Add(this);
+            Add add = new Add(this, currentUser)
+            {
+                currentUser = currentUser
+            };
             add.Show();
             this.Hide();
         }
@@ -100,6 +103,28 @@ namespace WindowsFormsApp
         {
             lblCurrentUser.Text = "current User: " + currentUser.Login;
 
+        }
+
+        private void dataGridViewToDo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void PopulateDataGridView()
+        {
+            string query = "SELECT * FROM tasks WHERE Stage IN ('ToDo', 'InProgress', 'Suspended', 'Done')";
+            using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
+            {
+                connection.Open();
+                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                {
+                    using (SQLiteDataAdapter adapter = new SQLiteDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridViewToDo.DataSource = dataTable;
+                    }
+                }
+            }
         }
     }
 

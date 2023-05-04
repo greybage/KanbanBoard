@@ -17,7 +17,7 @@ namespace WindowsFormsApp
 {
     public partial class Login : Form
     {
-        public TextBox TxtPassword;///{ get { return txtPassword; } }
+        public TextBox TxtPassword;
 
         private Form previousForm;
         public Login(Form previousForm)
@@ -103,6 +103,9 @@ namespace WindowsFormsApp
 
         }
 
-        
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -33,15 +33,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Addbtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
             this.MyTasksbtn = new System.Windows.Forms.Button();
             this.TeamTasksbtn = new System.Windows.Forms.Button();
             this.LogOutbtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.lblCurrentUser = new System.Windows.Forms.Label();
+            this.dataGridViewToDo = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
             this.SuspendLayout();
             // 
             // to
@@ -49,11 +47,11 @@
             this.to.AutoSize = true;
             this.to.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.to.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.to.Location = new System.Drawing.Point(40, 172);
+            this.to.Location = new System.Drawing.Point(9, 265);
             this.to.Name = "to";
-            this.to.Size = new System.Drawing.Size(133, 31);
+            this.to.Size = new System.Drawing.Size(95, 31);
             this.to.TabIndex = 0;
-            this.to.Text = "To do List";
+            this.to.Text = "To Do ";
             this.to.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
@@ -101,39 +99,6 @@
             this.label3.Size = new System.Drawing.Size(151, 31);
             this.label3.TabIndex = 9;
             this.label3.Text = "Suspended";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(40, 223);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(133, 264);
-            this.listBox1.TabIndex = 10;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(185, 223);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(133, 264);
-            this.listBox2.TabIndex = 11;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(344, 223);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(133, 264);
-            this.listBox3.TabIndex = 12;
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(492, 223);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(133, 264);
-            this.listBox4.TabIndex = 13;
-            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
             // 
             // MyTasksbtn
             // 
@@ -184,21 +149,27 @@
             this.lblCurrentUser.TabIndex = 18;
             this.lblCurrentUser.Click += new System.EventHandler(this.lblCurrentUser_Text);
             // 
+            // dataGridViewToDo
+            // 
+            this.dataGridViewToDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewToDo.Location = new System.Drawing.Point(12, 319);
+            this.dataGridViewToDo.Name = "dataGridViewToDo";
+            this.dataGridViewToDo.Size = new System.Drawing.Size(105, 176);
+            this.dataGridViewToDo.TabIndex = 19;
+            this.dataGridViewToDo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToDo_CellContentClick);
+            // 
             // MainList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(931, 519);
+            this.Controls.Add(this.dataGridViewToDo);
             this.Controls.Add(this.lblCurrentUser);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.LogOutbtn);
             this.Controls.Add(this.TeamTasksbtn);
             this.Controls.Add(this.MyTasksbtn);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Addbtn);
             this.Controls.Add(this.label2);
@@ -207,6 +178,7 @@
             this.Name = "MainList";
             this.Text = "MainList";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,15 +191,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Addbtn;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Button MyTasksbtn;
         private System.Windows.Forms.Button TeamTasksbtn;
         private System.Windows.Forms.Button LogOutbtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblCurrentUser;
+        private System.Windows.Forms.DataGridView dataGridViewToDo;
     }
 }
 
