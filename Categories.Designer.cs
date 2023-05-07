@@ -30,11 +30,11 @@ namespace WindowsFormsApp
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.AddCategorybtn = new System.Windows.Forms.Button();
+            this.DeleteCategoriesbtn = new System.Windows.Forms.Button();
+            this.Backbtn = new System.Windows.Forms.Button();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -49,61 +49,66 @@ namespace WindowsFormsApp
             this.label1.Text = "Add Category:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtCategory
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtCategory.Location = new System.Drawing.Point(17, 57);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(134, 20);
+            this.txtCategory.TabIndex = 12;
             // 
-            // button1
+            // AddCategorybtn
             // 
-            this.button1.Location = new System.Drawing.Point(17, 83);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddCategorybtn.Location = new System.Drawing.Point(17, 83);
+            this.AddCategorybtn.Name = "AddCategorybtn";
+            this.AddCategorybtn.Size = new System.Drawing.Size(134, 23);
+            this.AddCategorybtn.TabIndex = 13;
+            this.AddCategorybtn.Text = "Add";
+            this.AddCategorybtn.UseVisualStyleBackColor = true;
+            this.AddCategorybtn.Click += new System.EventHandler(this.AddCategorybtn_Click);
             // 
-            // listBox4
+            // DeleteCategoriesbtn
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(17, 172);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(134, 134);
-            this.listBox4.TabIndex = 14;
+            this.DeleteCategoriesbtn.Location = new System.Drawing.Point(157, 172);
+            this.DeleteCategoriesbtn.Name = "DeleteCategoriesbtn";
+            this.DeleteCategoriesbtn.Size = new System.Drawing.Size(134, 23);
+            this.DeleteCategoriesbtn.TabIndex = 15;
+            this.DeleteCategoriesbtn.Text = "Delete";
+            this.DeleteCategoriesbtn.UseVisualStyleBackColor = true;
+            this.DeleteCategoriesbtn.Click += new System.EventHandler(this.DeleteCategoriesbtn_Click);
             // 
-            // button2
+            // Backbtn
             // 
-            this.button2.Location = new System.Drawing.Point(157, 172);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 23);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Backbtn.Location = new System.Drawing.Point(263, 12);
+            this.Backbtn.Name = "Backbtn";
+            this.Backbtn.Size = new System.Drawing.Size(95, 23);
+            this.Backbtn.TabIndex = 16;
+            this.Backbtn.Text = "Back";
+            this.Backbtn.UseVisualStyleBackColor = true;
+            this.Backbtn.Click += new System.EventHandler(this.Backbtn_Click);
             // 
-            // button3
+            // categoryComboBox
             // 
-            this.button3.Location = new System.Drawing.Point(263, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 23);
-            this.button3.TabIndex = 16;
-            this.button3.Text = "Back";
-            this.button3.UseVisualStyleBackColor = true;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(3, 172);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(148, 21);
+            this.categoryComboBox.TabIndex = 24;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // Categories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 319);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(370, 200);
+            this.Controls.Add(this.categoryComboBox);
+            this.Controls.Add(this.Backbtn);
+            this.Controls.Add(this.DeleteCategoriesbtn);
+            this.Controls.Add(this.AddCategorybtn);
+            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.label1);
             this.Name = "Categories";
             this.Text = "Categories";
+            this.Load += new System.EventHandler(this.Categories_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,10 +117,10 @@ namespace WindowsFormsApp
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.Button AddCategorybtn;
+        private System.Windows.Forms.Button DeleteCategoriesbtn;
+        private System.Windows.Forms.Button Backbtn;
+        private System.Windows.Forms.ComboBox categoryComboBox;
     }
 }
