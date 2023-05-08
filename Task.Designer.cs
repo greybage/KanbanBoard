@@ -30,19 +30,19 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.txtDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.priorityComboBox = new System.Windows.Forms.ComboBox();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.stageComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -65,19 +65,19 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Description";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(67, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(137, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtName.Location = new System.Drawing.Point(82, 12);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(137, 20);
+            this.txtName.TabIndex = 3;
             // 
-            // textBox2
+            // txtDescription
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 171);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(709, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtDescription.Location = new System.Drawing.Point(12, 171);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(709, 20);
+            this.txtDescription.TabIndex = 4;
             // 
             // button2
             // 
@@ -99,28 +99,12 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Date";
             // 
-            // textBox3
+            // txtDate
             // 
-            this.textBox3.Location = new System.Drawing.Point(71, 43);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(137, 20);
-            this.textBox3.TabIndex = 8;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(110, 269);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(136, 30);
-            this.listBox1.TabIndex = 9;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(110, 233);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(136, 30);
-            this.listBox2.TabIndex = 12;
+            this.txtDate.Location = new System.Drawing.Point(71, 43);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(137, 20);
+            this.txtDate.TabIndex = 8;
             // 
             // label6
             // 
@@ -165,14 +149,6 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Category";
             // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(110, 311);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(136, 30);
-            this.listBox3.TabIndex = 19;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -180,9 +156,33 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 25);
+            this.label1.Size = new System.Drawing.Size(64, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Title";
+            this.label1.Text = "Name";
+            // 
+            // priorityComboBox
+            // 
+            this.priorityComboBox.FormattingEnabled = true;
+            this.priorityComboBox.Location = new System.Drawing.Point(89, 233);
+            this.priorityComboBox.Name = "priorityComboBox";
+            this.priorityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.priorityComboBox.TabIndex = 24;
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(110, 317);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(121, 21);
+            this.categoryComboBox.TabIndex = 25;
+            // 
+            // stageComboBox
+            // 
+            this.stageComboBox.FormattingEnabled = true;
+            this.stageComboBox.Location = new System.Drawing.Point(83, 274);
+            this.stageComboBox.Name = "stageComboBox";
+            this.stageComboBox.Size = new System.Drawing.Size(121, 21);
+            this.stageComboBox.TabIndex = 26;
             // 
             // Form3
             // 
@@ -190,23 +190,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.stageComboBox);
+            this.Controls.Add(this.categoryComboBox);
+            this.Controls.Add(this.priorityComboBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Form3";
             this.Text = "S";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,18 +217,18 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox priorityComboBox;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.ComboBox stageComboBox;
     }
 }
