@@ -10,7 +10,7 @@ namespace WindowsFormsApp
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button Loginbtn;
         private System.Windows.Forms.Button Registerbtn;
-        private System.Diagnostics.PerformanceCounter performanceCounter1;
+         private System.Diagnostics.PerformanceCounter performanceCounter1;
 
         private void InitializeComponent()
         {

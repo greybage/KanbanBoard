@@ -20,12 +20,13 @@ namespace WindowsFormsApp
     public partial class Login : Form
     {
         public TextBox TxtPassword;
-
+        private DatabaseManager databaseManager;
         private Form previousForm;
         public Login(Form previousForm)
         {
             InitializeComponent();
             this.previousForm = previousForm;
+            databaseManager = new DatabaseManager("Data Source=DataBase.db");
         }
 
 
@@ -58,44 +59,55 @@ namespace WindowsFormsApp
         {
             string login = txtLogin.Text;
             string password = txtPassword.Text;
-           
+
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                if (databaseManager.Connection.State != ConnectionState.Open)
-                {
-                    databaseManager.Connection.Open();
-                }
-                //string query = "SELECT id FROM users WHERE login=@login AND password=@password";
-                string query = "SELECT id FROM users WHERE login='" + login + "' AND password='" + password + "'";
-
-
+                string query = "SELECT id FROM users WHERE login=@login AND password=@password";
                 databaseManager.AddQueryParameter("@login", login);
                 databaseManager.AddQueryParameter("@password", password);
 
-                if (databaseManager.Connection.State != ConnectionState.Open)
+                SQLiteDataReader reader = null;
+                try
                 {
                     databaseManager.Connection.Open();
-                }
+                    databaseManager.Command.CommandText = query;
+                    reader = databaseManager.Command.ExecuteReader();
 
-                SQLiteDataReader reader = databaseManager.ExecuteQuery(query);
-
-                if (reader != null && reader.Read())
-                {
-                    int id = reader.GetInt32(0);
-                    User user = new User(id, login, password);
-
-                    MainList mainList = new MainList(this, this, user)
+                    if (reader != null && reader.HasRows)
                     {
-                        currentUser = user
-                    };
-                    mainList.Show();
-                    this.Hide();
+                        reader.Read();
+                        int id = reader.GetInt32(0);
+                        User user = new User(id, login, password);
+
+                        MainList mainList = new MainList(this, this, user)
+                        {
+                            currentUser = user
+                        };
+                        mainList.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nieprawidłowy login lub hasło");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Nieprawidłowy login lub hasło");
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
+                finally
+                {
+                    reader?.Close();
+                    databaseManager.Connection.Close();
                 }
             }
+        }
+
+
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            databaseManager.Dispose();
         }
 
 

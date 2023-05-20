@@ -1,23 +1,32 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
-using System.Data;
 
 namespace WindowsFormsApp
 {
     public class DatabaseManager : IDisposable
     {
+        private string connectionString;
         private SQLiteConnection connection;
         private SQLiteCommand command;
-        private string connectionString;
-        public SQLiteConnection Connection { get; private set; }
+
+        public SQLiteConnection Connection
+        {
+            get { return connection; }
+            set { connection = value; }
+        }
+        public SQLiteCommand Command
+        {
+            get { return command; }
+            set { command = value; }
+        }
 
         public DatabaseManager(string connectionString)
         {
             this.connectionString = connectionString;
             connection = new SQLiteConnection(connectionString);
-            command = new SQLiteCommand();
-            command.Connection = connection;
+            command = new SQLiteCommand(connection);
         }
 
         public int ExecuteScalar(string query)
@@ -26,10 +35,8 @@ namespace WindowsFormsApp
             try
             {
                 connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                {
-                    result = Convert.ToInt32(command.ExecuteScalar());
-                }
+                command.CommandText = query;
+                result = Convert.ToInt32(command.ExecuteScalar());
             }
             catch (Exception ex)
             {
@@ -48,10 +55,8 @@ namespace WindowsFormsApp
             try
             {
                 connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                {
-                    rowsAffected = command.ExecuteNonQuery();
-                }
+                command.CommandText = query;
+                rowsAffected = command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -70,10 +75,8 @@ namespace WindowsFormsApp
             try
             {
                 connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                {
-                    reader = command.ExecuteReader();
-                }
+                command.CommandText = query;
+                reader = command.ExecuteReader();
             }
             catch (Exception ex)
             {

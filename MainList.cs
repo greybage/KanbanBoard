@@ -33,8 +33,8 @@ namespace WindowsFormsApp
 
             lblCurrentUser.Text = "Current user: " + currentUser.Login;
 
-            string connectionString = "Data Source=DataBase.db;Version=3;";
-            databaseManager = new DatabaseManager(connectionString);
+            //string connectionString = "Data Source=DataBase.db;Version=3;";
+            databaseManager = new DatabaseManager("Data Source=DataBase.db");
         }
 
         private void MainList_Load(object sender, EventArgs e)
@@ -186,12 +186,24 @@ namespace WindowsFormsApp
 
             using (DatabaseManager databaseManager = new DatabaseManager("DataBase.db"))
             {
-                SQLiteDataReader reader = databaseManager.ExecuteQuery(query);
-                DataTable dataTable = new DataTable();
-                dataTable.Load(reader);
-                dataGridView.DataSource = dataTable;
+                SQLiteDataReader dataReader = databaseManager.ExecuteQuery(query);
+
+                if (dataReader != null && !dataReader.IsClosed)
+                {
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+                    dataGridView.DataSource = dataTable;
+                }
+                else
+                {
+                    MessageBox.Show("Wystąpił problem podczas odczytu danych z bazy.");
+                }
             }
         }
+
+
+
+
 
         private void MainList_Show(object sender, FormClosedEventArgs e)
         {
