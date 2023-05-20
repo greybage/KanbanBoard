@@ -10,3 +10,10 @@ f) przegądania historii aktualnych zadań
 Kategorie zadań są tworzone bezpośrednio przez uzytkownika.
 Każde zadanie będzie możliwe do edytowania przez użytkownika.
 Język C#
+komunikacja z baza w odzielnej klasie  
+daty-pokazywanie przeterminowanych zadan  
+definicja obiektów task i kategoria
+nastepne zajecia 22.05 ostateczne ustalenie zakresu
+znajomosc calej aplikacji
+
+
