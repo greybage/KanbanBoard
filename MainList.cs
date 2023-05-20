@@ -119,49 +119,48 @@ namespace WindowsFormsApp
         {
             string queryToDo = "SELECT Name, Category, Priority FROM tasks WHERE Stage='ToDo'";
             DataTable dataTableToDo = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("DataBase.db"))
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                using (SQLiteDataReader reader = databaseManager.ExecuteQuery(queryToDo))
+                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(queryToDo, databaseManager.Connection))
                 {
-                    dataTableToDo.Load(reader);
+                    dataAdapter.Fill(dataTableToDo);
                 }
             }
             dataGridViewToDo.DataSource = dataTableToDo;
 
             string queryInProgress = "SELECT Name, Category, Priority FROM tasks WHERE Stage='InProgress'";
             DataTable dataTableInProgress = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("DataBase.db"))
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                using (SQLiteDataReader reader = databaseManager.ExecuteQuery(queryInProgress))
+                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(queryInProgress, databaseManager.Connection))
                 {
-                    dataTableInProgress.Load(reader);
+                    dataAdapter.Fill(dataTableInProgress);
                 }
             }
             dataGridViewInProgress.DataSource = dataTableInProgress;
 
             string querySuspended = "SELECT Name, Category, Priority FROM tasks WHERE Stage='Suspended'";
             DataTable dataTableSuspended = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("DataBase.db"))
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                using (SQLiteDataReader reader = databaseManager.ExecuteQuery(querySuspended))
+                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(querySuspended, databaseManager.Connection))
                 {
-                    dataTableSuspended.Load(reader);
+                    dataAdapter.Fill(dataTableSuspended);
                 }
             }
             dataGridViewSuspended.DataSource = dataTableSuspended;
 
             string queryDone = "SELECT Name, Category, Priority FROM tasks WHERE Stage='Done'";
             DataTable dataTableDone = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("DataBase.db"))
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                using (SQLiteDataReader reader = databaseManager.ExecuteQuery(queryDone))
+                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(queryDone, databaseManager.Connection))
                 {
-                    dataTableDone.Load(reader);
+                    dataAdapter.Fill(dataTableDone);
                 }
             }
             dataGridViewDone.DataSource = dataTableDone;
         }
-
 
         private void Categoriesbtn_Click_1(object sender, EventArgs e)
         {
@@ -182,24 +181,18 @@ namespace WindowsFormsApp
         }
         private void PopulateDataGridView(DataGridView dataGridView, string stage)
         {
-            string query = $"SELECT * FROM tasks WHERE Stage='{stage}'";
-
-            using (DatabaseManager databaseManager = new DatabaseManager("DataBase.db"))
+            string query = $"SELECT Name, Category, Priority FROM tasks WHERE Stage='{stage}'";
+            DataTable dataTable = new DataTable();
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                SQLiteDataReader dataReader = databaseManager.ExecuteQuery(query);
-
-                if (dataReader != null && !dataReader.IsClosed)
+                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, databaseManager.Connection))
                 {
-                    DataTable dataTable = new DataTable();
-                    dataTable.Load(dataReader);
-                    dataGridView.DataSource = dataTable;
-                }
-                else
-                {
-                    MessageBox.Show("Wystąpił problem podczas odczytu danych z bazy.");
+                    dataAdapter.Fill(dataTable);
                 }
             }
+            dataGridView.DataSource = dataTable;
         }
+
 
 
 
@@ -225,6 +218,11 @@ namespace WindowsFormsApp
         }
 
         private void dataGridViewInProgress_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewSuspended_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

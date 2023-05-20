@@ -182,6 +182,7 @@
             this.dataGridViewSuspended.Name = "dataGridViewSuspended";
             this.dataGridViewSuspended.Size = new System.Drawing.Size(329, 176);
             this.dataGridViewSuspended.TabIndex = 21;
+            this.dataGridViewSuspended.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSuspended_CellContentClick);
             // 
             // dataGridViewDone
             // 

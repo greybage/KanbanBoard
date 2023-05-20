@@ -103,7 +103,7 @@ namespace WindowsFormsApp
 
         public void ClearParameters()
         {
-            command.Parameters.Clear();
+                command.Parameters.Clear();
         }
 
         public void Dispose()
