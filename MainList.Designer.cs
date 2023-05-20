@@ -173,6 +173,7 @@
             this.dataGridViewInProgress.Name = "dataGridViewInProgress";
             this.dataGridViewInProgress.Size = new System.Drawing.Size(329, 176);
             this.dataGridViewInProgress.TabIndex = 20;
+            this.dataGridViewInProgress.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewInProgress_CellContentClick);
             // 
             // dataGridViewSuspended
             // 

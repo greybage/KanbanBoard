@@ -7,29 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
+
 
 namespace WindowsFormsApp
 {
-    public partial class Form3 : Form
+    public class Task
     {
-        public Form3()
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
+        public string Priority { get; set; }
+        public string Stage { get; set; }
+        public string Category { get; set; }
+
+        public Task(int id, string name, DateTime date, string description, string priority, string stage, string category)
         {
-            InitializeComponent();
-        }
+            ID = id;
+            Name = name;
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
+            Date = date;
+            Description = description;
+            Priority = priority;
+            Stage = stage;
+            Category = category;
         }
     }
+    
 }

@@ -79,6 +79,7 @@
     <Compile Include="Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseManager.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,11 +100,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task.cs">
+    <Compile Include="Task.cs" />
+    <Compile Include="TaskView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Task.Designer.cs">
-      <DependentUpon>Task.cs</DependentUpon>
+    <Compile Include="TaskView.Designer.cs">
+      <DependentUpon>TaskView.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Add.resx">
@@ -130,8 +132,8 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Task.resx">
-      <DependentUpon>Task.cs</DependentUpon>
+    <EmbeddedResource Include="TaskView.resx">
+      <DependentUpon>TaskView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\Users.db" />
     <None Include="bin\Debug\WindowsFormsApp.exe.config" />

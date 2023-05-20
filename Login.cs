@@ -13,6 +13,8 @@ using System.IO;
 
 
 
+
+
 namespace WindowsFormsApp
 {
     public partial class Login : Form
@@ -56,56 +58,67 @@ namespace WindowsFormsApp
         {
             string login = txtLogin.Text;
             string password = txtPassword.Text;
-
-            // połączenie z bazą danych SQLite
-            string connectionString = "Data Source=DataBase.db;Version=3;";
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+           
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                connection.Open();
-
-                // zapytanie SQL w celu pobrania id użytkownika o podanym loginie i haśle
-                string query = "SELECT id FROM users WHERE login=@login AND password=@password";
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                if (databaseManager.Connection.State != ConnectionState.Open)
                 {
-                    command.Parameters.AddWithValue("@login", login);
-                    command.Parameters.AddWithValue("@password", password);
+                    databaseManager.Connection.Open();
+                }
+                //string query = "SELECT id FROM users WHERE login=@login AND password=@password";
+                string query = "SELECT id FROM users WHERE login='" + login + "' AND password='" + password + "'";
 
-                    using (SQLiteDataReader reader = command.ExecuteReader())
+
+                databaseManager.AddQueryParameter("@login", login);
+                databaseManager.AddQueryParameter("@password", password);
+
+                if (databaseManager.Connection.State != ConnectionState.Open)
+                {
+                    databaseManager.Connection.Open();
+                }
+
+                SQLiteDataReader reader = databaseManager.ExecuteQuery(query);
+
+                if (reader != null && reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    User user = new User(id, login, password);
+
+                    MainList mainList = new MainList(this, this, user)
                     {
-                        // jeśli istnieje użytkownik o podanym loginie i haśle, pobierz jego id i utwórz obiekt użytkownika
-                        if (reader.HasRows)
-                        {
-                            reader.Read();
-                            int id = reader.GetInt32(0);
-                            User user = new User(id, login, password);
-
-                            MainList mainList = new MainList(this,this, user)
-                            {
-                                currentUser = user
-                            };
-                            mainList.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nieprawidłowy login lub hasło");
-                        }
-                    }
+                        currentUser = user
+                    };
+                    mainList.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Nieprawidłowy login lub hasło");
                 }
             }
         }
-       
 
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+
+
+
+
+
+
+
+
+        private void textLogin_TextChanged(object sender, EventArgs e)
         {
-
+            TextBox textBox = (TextBox)sender;
+            txtLogin.Text = textBox.Text;
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-
+            TextBox textBox = (TextBox)sender;
+            txtPassword.Text = textBox.Text;
         }
     }
 }
