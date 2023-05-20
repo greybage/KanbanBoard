@@ -79,6 +79,7 @@
     <Compile Include="Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>

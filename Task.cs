@@ -20,18 +20,17 @@ namespace WindowsFormsApp
         public string Description { get; set; }
         public string Priority { get; set; }
         public string Stage { get; set; }
-        public string Category { get; set; }
+        public int CategoryID { get; set; }
 
-        public Task(int id, string name, DateTime date, string description, string priority, string stage, string category)
+        public Task(int id, string name, DateTime date, string description, string priority, string stage, int categoryID)
         {
             ID = id;
             Name = name;
-
             Date = date;
             Description = description;
             Priority = priority;
             Stage = stage;
-            Category = category;
+            CategoryID = categoryID;
         }
     }
     
