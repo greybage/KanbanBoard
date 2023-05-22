@@ -117,7 +117,7 @@ namespace WindowsFormsApp
         }
         private void PopulateDataGridView()
         {
-            string queryToDo = "SELECT Name, Category, Priority FROM tasks WHERE Stage='ToDo'";
+            string queryToDo = "SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='ToDo'";
             DataTable dataTableToDo = new DataTable();
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
@@ -128,7 +128,7 @@ namespace WindowsFormsApp
             }
             dataGridViewToDo.DataSource = dataTableToDo;
 
-            string queryInProgress = "SELECT Name, Category, Priority FROM tasks WHERE Stage='InProgress'";
+            string queryInProgress = "SELECT Name,CategoryId, Priority FROM tasks WHERE Stage='InProgress'";
             DataTable dataTableInProgress = new DataTable();
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
@@ -139,7 +139,7 @@ namespace WindowsFormsApp
             }
             dataGridViewInProgress.DataSource = dataTableInProgress;
 
-            string querySuspended = "SELECT Name, Category, Priority FROM tasks WHERE Stage='Suspended'";
+            string querySuspended = "SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='Suspended'";
             DataTable dataTableSuspended = new DataTable();
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
@@ -150,7 +150,7 @@ namespace WindowsFormsApp
             }
             dataGridViewSuspended.DataSource = dataTableSuspended;
 
-            string queryDone = "SELECT Name, Category, Priority FROM tasks WHERE Stage='Done'";
+            string queryDone = "SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='Done'";
             DataTable dataTableDone = new DataTable();
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
@@ -181,7 +181,7 @@ namespace WindowsFormsApp
         }
         private void PopulateDataGridView(DataGridView dataGridView, string stage)
         {
-            string query = $"SELECT Name, Category, Priority FROM tasks WHERE Stage='{stage}'";
+            string query = $"SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='{stage}'";
             DataTable dataTable = new DataTable();
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {

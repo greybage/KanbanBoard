@@ -106,6 +106,7 @@ namespace WindowsFormsApp
             this.Controls.Add(this.LoginSet);
             this.Name = "Register";
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.Register_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

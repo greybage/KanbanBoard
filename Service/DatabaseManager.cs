@@ -115,11 +115,46 @@ namespace WindowsFormsApp
                 connection.Close();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 connection.Close();
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }           
         }
+/*
+        public void AddTask(Task task)
+        {
+            try
+            {
+
+                string insertQuery = "INSERT INTO tasks (TaskID, UserID, Name, Date, Description, Priority, CategoryId, Stage) " +
+                               "VALUES ((SELECT MAX(TaskID) FROM tasks) + 1, @UserID, @Name, @Date, @Description, @Priority, @CategoryId, 'ToDo')";
+
+                command.Parameters.AddWithValue("@UserID", task.UserID);
+                command.Parameters.AddWithValue("@Name", task.Name);
+                command.Parameters.AddWithValue("@Date", task.Date);
+                command.Parameters.AddWithValue("@Description", task.Description);
+                command.Parameters.AddWithValue("@Priority", task.Priority);
+                command.Parameters.AddWithValue("@CategoryId", task.CategoryID);
+
+
+                int result = command.ExecuteNonQuery();
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Użytkownik został zarejestrowany.");
+                }
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+*/
 
         public void AddQueryParameter(string parameterName, string value)
         {

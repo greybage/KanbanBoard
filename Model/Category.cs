@@ -9,12 +9,12 @@ namespace WindowsFormsApp
     public class Category
     {
         public int CategoryID { get; set; }
-        public string Name { get; set; }
+        public string CategoryName { get; set; }
 
-        public Category(int categoryId, string name)
+        public Category(int categoryId, string categoryname)
         {
             CategoryID = categoryId;
-            Name = name;
+            CategoryName = categoryname;
         }
     }
 }

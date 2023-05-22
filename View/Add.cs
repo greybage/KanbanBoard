@@ -33,7 +33,7 @@ namespace WindowsFormsApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string query = "SELECT CategoryName FROM categories";
+            string query = "SELECT CategoryId FROM categories";
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
                 connection.Open();
@@ -43,7 +43,7 @@ namespace WindowsFormsApp
                     {
                         while (reader.Read())
                         {
-                            categoryComboBox.Items.Add(reader.GetString(0));
+                            categoryComboBox.Items.Add(reader.GetValue(0));
                         }
                     }
                 }
@@ -61,27 +61,30 @@ namespace WindowsFormsApp
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
-            string name = txtName.Text;
-            string date = txtDate.Text;
-            string description = txtDescription.Text;
-            string priority = priorityComboBox.SelectedItem.ToString();
-            string category = categoryComboBox.SelectedItem.ToString();
-            int userID = currentUser.Id;
+            Task task = new Task()
+            {
+                Name = txtName.Text,
+                Date = dateTimePicker.Value.ToString(),
+                Description = txtDescription.Text,
+                Priority = priorityComboBox.SelectedItem.ToString(),
+                CategoryID = int.Parse(categoryComboBox.SelectedItem.ToString()),
+                UserID = currentUser.Id
+            };
 
-            string query = "INSERT INTO tasks (TaskID, UserID, Name, Date, Description, Priority, Category, Stage) " +
-                           "VALUES ((SELECT MAX(TaskID) FROM tasks) + 1, @UserID, @Name, @Date, @Description, @Priority, @Category, 'ToDo')";
+            string query = "INSERT INTO tasks (TaskID, UserID, Name, Date, Description, Priority, CategoryId, Stage) " +
+                           "VALUES ((SELECT MAX(TaskID) FROM tasks) + 1, @UserID, @Name, @Date, @Description, @Priority, @CategoryId, 'ToDo')";
 
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@UserID", userID);
-                    command.Parameters.AddWithValue("@Name", name);
-                    command.Parameters.AddWithValue("@Date", date);
-                    command.Parameters.AddWithValue("@Description", description);
-                    command.Parameters.AddWithValue("@Priority", priority);
-                    command.Parameters.AddWithValue("@Category", category);
+                    command.Parameters.AddWithValue("@UserID", task.UserID);
+                    command.Parameters.AddWithValue("@Name", task.Name);
+                    command.Parameters.AddWithValue("@Date", task.Date);
+                    command.Parameters.AddWithValue("@Description", task.Description);
+                    command.Parameters.AddWithValue("@Priority", task.Priority);
+                    command.Parameters.AddWithValue("@CategoryId", task.CategoryID);
 
                     int result = command.ExecuteNonQuery();
                     if (result > 0)
@@ -124,6 +127,11 @@ namespace WindowsFormsApp
         }
 
         private void txtDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
