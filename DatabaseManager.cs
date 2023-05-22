@@ -11,16 +11,6 @@ namespace WindowsFormsApp
         private SQLiteConnection connection;
         private SQLiteCommand command;
 
-        public SQLiteConnection Connection
-        {
-            get { return connection; }
-            set { connection = value; }
-        }
-        public SQLiteCommand Command
-        {
-            get { return command; }
-            set { command = value; }
-        }
 
         public DatabaseManager(string connectionString)
         {

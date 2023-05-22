@@ -67,58 +67,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add.cs">
+    <Compile Include="View\Add.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add.Designer.cs">
+    <Compile Include="View\Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
-    <Compile Include="Categories.cs">
+    <Compile Include="View\Categories.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Categories.Designer.cs">
+    <Compile Include="View\Categories.Designer.cs">
       <DependentUpon>Categories.cs</DependentUpon>
     </Compile>
-    <Compile Include="Category.cs" />
-    <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Service\DatabaseManager.cs" />
+    <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainList.cs">
+    <Compile Include="View\MainList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainList.Designer.cs">
+    <Compile Include="View\MainList.Designer.cs">
       <DependentUpon>MainList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.cs">
+    <Compile Include="View\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Register.Designer.cs">
+    <Compile Include="View\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="Task.cs" />
-    <Compile Include="TaskView.cs">
+    <Compile Include="Model\Task.cs" />
+    <Compile Include="View\TaskView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TaskView.Designer.cs">
+    <Compile Include="View\TaskView.Designer.cs">
       <DependentUpon>TaskView.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <EmbeddedResource Include="Add.resx">
+    <Compile Include="Model\User.cs" />
+    <EmbeddedResource Include="View\Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Categories.resx">
+    <EmbeddedResource Include="View\Categories.resx">
       <DependentUpon>Categories.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainList.resx">
+    <EmbeddedResource Include="View\MainList.resx">
       <DependentUpon>MainList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,10 +130,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Register.resx">
+    <EmbeddedResource Include="View\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TaskView.resx">
+    <EmbeddedResource Include="View\TaskView.resx">
       <DependentUpon>TaskView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bin\Debug\Users.db" />
