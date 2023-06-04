@@ -95,6 +95,7 @@ namespace WindowsFormsApp
                 }
             }
         }
+        public ComboBox categoryCombobox;
 
 
         private void button2_Click(object sender, EventArgs e)

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using WindowsFormsApp;
+
 
 namespace WindowsFormsApp
 {
@@ -33,7 +35,7 @@ namespace WindowsFormsApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string query = "SELECT CategoryId FROM categories";
+            string query = "SELECT CategoryName FROM categories";
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
                 connection.Open();
@@ -58,46 +60,47 @@ namespace WindowsFormsApp
         {
 
         }
+        public ComboBox categoryCombobox;
 
         private void Addbtn_Click(object sender, EventArgs e)
         {
-            Task task = new Task()
+            try
             {
-                Name = txtName.Text,
-                Date = dateTimePicker.Value.ToString(),
-                Description = txtDescription.Text,
-                Priority = priorityComboBox.SelectedItem.ToString(),
-                CategoryID = int.Parse(categoryComboBox.SelectedItem.ToString()),
-                UserID = currentUser.Id
-            };
+                string connectionString = "Data Source=DataBase.db;Version=3;";
+                string name = txtName.Text;
+                string date = dateTimePicker.Text;
+                string description = txtDescription.Text;
+                string priority = priorityComboBox.SelectedItem.ToString();
+                string category = categoryComboBox.SelectedItem.ToString();
+                int userID = currentUser.Id;
 
-            string query = "INSERT INTO tasks (TaskID, UserID, Name, Date, Description, Priority, CategoryId, Stage) " +
-                           "VALUES ((SELECT MAX(TaskID) FROM tasks) + 1, @UserID, @Name, @Date, @Description, @Priority, @CategoryId, 'ToDo')";
 
-            using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
+                using (DatabaseManager dbManager = new DatabaseManager(connectionString))
                 {
-                    command.Parameters.AddWithValue("@UserID", task.UserID);
-                    command.Parameters.AddWithValue("@Name", task.Name);
-                    command.Parameters.AddWithValue("@Date", task.Date);
-                    command.Parameters.AddWithValue("@Description", task.Description);
-                    command.Parameters.AddWithValue("@Priority", task.Priority);
-                    command.Parameters.AddWithValue("@CategoryId", task.CategoryID);
-
-                    int result = command.ExecuteNonQuery();
-                    if (result > 0)
+                    dbManager.CategoryCombobox = categoryCombobox;
+                    string categoryName = categoryComboBox.SelectedItem.ToString();
+                    int categoryId = dbManager.GetCategoryId(categoryName);
+                    
+                    if (categoryId != -1)
                     {
-                        MessageBox.Show("Task added successfully!");
+                        Task task = new Task(userID, name, date, description, priority, categoryId);
+
+                        dbManager.AddTask(task, categoryId);
+                        
                     }
                     else
                     {
-                        MessageBox.Show("An error occurred while adding the task.");
+                        MessageBox.Show("Nieprawidłowa kategoria.");
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd: {ex.Message}");
+            }
         }
+
+
 
 
         private void button2_Click(object sender, EventArgs e)

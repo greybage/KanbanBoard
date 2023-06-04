@@ -72,28 +72,7 @@ namespace WindowsFormsApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=DataBase.db;Version=3;";
-            string selectQuery = "SELECT * FROM Users";
-
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(selectQuery, connection))
-                {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        string usersData = "";
-                        while (reader.Read())
-                        {
-                            int id = reader.GetInt32(0);
-                            string login = reader.GetString(1);
-                            string password = reader.GetString(2);
-                            usersData += $"ID: {id}, Login: {login}, Password: {password}\n";
-                        }
-                        MessageBox.Show(usersData);
-                    }
-                }
-            }
+            
         }
 
         private void LogOutbtn_Click(object sender, EventArgs e)
@@ -115,52 +94,26 @@ namespace WindowsFormsApp
         {
 
         }
+        // W metodzie PopulateDataGridView w klasie MainList
         private void PopulateDataGridView()
         {
-            string queryToDo = "SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='ToDo'";
-            DataTable dataTableToDo = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
-            {
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(queryToDo, databaseManager.Connection))
-                {
-                    dataAdapter.Fill(dataTableToDo);
-                }
-            }
-            dataGridViewToDo.DataSource = dataTableToDo;
+            // ...
 
-            string queryInProgress = "SELECT Name,CategoryId, Priority FROM tasks WHERE Stage='InProgress'";
-            DataTable dataTableInProgress = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
-            {
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(queryInProgress, databaseManager.Connection))
-                {
-                    dataAdapter.Fill(dataTableInProgress);
-                }
-            }
-            dataGridViewInProgress.DataSource = dataTableInProgress;
+            List<Task> tasksToDo = databaseManager.GetTasksByStage("ToDo");
+            dataGridViewToDo.DataSource = tasksToDo;
 
-            string querySuspended = "SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='Suspended'";
-            DataTable dataTableSuspended = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
-            {
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(querySuspended, databaseManager.Connection))
-                {
-                    dataAdapter.Fill(dataTableSuspended);
-                }
-            }
-            dataGridViewSuspended.DataSource = dataTableSuspended;
+            List<Task> tasksInProgress = databaseManager.GetTasksByStage("InProgress");
+            dataGridViewInProgress.DataSource = tasksInProgress;
 
-            string queryDone = "SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='Done'";
-            DataTable dataTableDone = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
-            {
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(queryDone, databaseManager.Connection))
-                {
-                    dataAdapter.Fill(dataTableDone);
-                }
-            }
-            dataGridViewDone.DataSource = dataTableDone;
+            List<Task> tasksSuspended = databaseManager.GetTasksByStage("Suspended");
+            dataGridViewSuspended.DataSource = tasksSuspended;
+
+            List<Task> tasksDone = databaseManager.GetTasksByStage("Done");
+            dataGridViewDone.DataSource = tasksDone;
+
+            // ...
         }
+
 
         private void Categoriesbtn_Click_1(object sender, EventArgs e)
         {

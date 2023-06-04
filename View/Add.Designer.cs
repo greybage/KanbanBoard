@@ -214,7 +214,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox priorityComboBox;
-        private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        public System.Windows.Forms.ComboBox categoryComboBox;
     }
 }
