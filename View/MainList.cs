@@ -39,8 +39,8 @@ namespace WindowsFormsApp
 
         private void MainList_Load(object sender, EventArgs e)
         {
-            PopulateDataGridView();
-            RefreshDataGridView();
+            // PopulateDataGridView();
+            
         }
 
         
@@ -94,24 +94,25 @@ namespace WindowsFormsApp
         {
 
         }
-        // W metodzie PopulateDataGridView w klasie MainList
+       
         private void PopulateDataGridView()
         {
-            // ...
 
-            List<Task> tasksToDo = databaseManager.GetTasksByStage("ToDo");
-            dataGridViewToDo.DataSource = tasksToDo;
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
+            {
+                List<Task> tasksToDo = databaseManager.GetTasksByStage("ToDo");
+                dataGridViewToDo.DataSource = tasksToDo;
 
-            List<Task> tasksInProgress = databaseManager.GetTasksByStage("InProgress");
-            dataGridViewInProgress.DataSource = tasksInProgress;
+                List<Task> tasksInProgress = databaseManager.GetTasksByStage("InProgress");
+                dataGridViewInProgress.DataSource = tasksInProgress;
 
-            List<Task> tasksSuspended = databaseManager.GetTasksByStage("Suspended");
-            dataGridViewSuspended.DataSource = tasksSuspended;
+                List<Task> tasksSuspended = databaseManager.GetTasksByStage("Suspended");
+                dataGridViewSuspended.DataSource = tasksSuspended;
 
-            List<Task> tasksDone = databaseManager.GetTasksByStage("Done");
-            dataGridViewDone.DataSource = tasksDone;
+                List<Task> tasksDone = databaseManager.GetTasksByStage("Done");
+                dataGridViewDone.DataSource = tasksDone;
+            }
 
-            // ...
         }
 
 
@@ -121,49 +122,21 @@ namespace WindowsFormsApp
             categories.Show();
             this.Hide();
         }
-        private void MainList_Activated(object sender, EventArgs e)
+       
+       public void RefreshDataGridView()
         {
-            RefreshDataGridView();
+           // PopulateDataGridView();
         }
-        public void RefreshDataGridView()
-        {
-            PopulateDataGridView(dataGridViewToDo, "ToDo");
-            PopulateDataGridView(dataGridViewInProgress, "InProgress");
-            PopulateDataGridView(dataGridViewSuspended, "Suspended");
-            PopulateDataGridView(dataGridViewDone, "Done");
-        }
-        private void PopulateDataGridView(DataGridView dataGridView, string stage)
-        {
-            string query = $"SELECT Name, CategoryId, Priority FROM tasks WHERE Stage='{stage}'";
-            DataTable dataTable = new DataTable();
-            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
-            {
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, databaseManager.Connection))
-                {
-                    dataAdapter.Fill(dataTable);
-                }
-            }
-            dataGridView.DataSource = dataTable;
-        }
+      
 
 
 
 
 
 
-        private void MainList_Show(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
+     
 
-        private void MainList_VisibleChanged(object sender, EventArgs e)
-        {
-            if (Visible)
-            {
-                
-                RefreshDataGridView();
-            }
-        }
+     
 
         private void button1_Click(object sender, EventArgs e)
         {

@@ -8,7 +8,7 @@
         public string Description { get; set; }
         public string Priority { get; set; }
         public string Stage { get; set; }
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
         public int UserID { get; set; }
         
 
@@ -19,7 +19,7 @@
             Date = date;
             Description = description;
             Priority = priority;
-            CategoryID = categoryId;
+            CategoryId = categoryId;
         }
         public Task()
         {

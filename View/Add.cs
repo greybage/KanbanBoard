@@ -67,23 +67,29 @@ namespace WindowsFormsApp
             try
             {
                 string connectionString = "Data Source=DataBase.db;Version=3;";
-                string name = txtName.Text;
-                string date = dateTimePicker.Text;
-                string description = txtDescription.Text;
-                string priority = priorityComboBox.SelectedItem.ToString();
-                string category = categoryComboBox.SelectedItem.ToString();
-                int userID = currentUser.Id;
 
 
                 using (DatabaseManager dbManager = new DatabaseManager(connectionString))
                 {
-                    dbManager.CategoryCombobox = categoryCombobox;
+                    
+                    string name = txtName.Text;
+                    string date = dateTimePicker.Text;
+                    string description = txtDescription.Text;
+                    string priority = priorityComboBox.SelectedItem.ToString();
                     string categoryName = categoryComboBox.SelectedItem.ToString();
                     int categoryId = dbManager.GetCategoryId(categoryName);
-                    
+                    int userID = currentUser.Id;
+                                    
+
+
+
                     if (categoryId != -1)
                     {
+
+
                         Task task = new Task(userID, name, date, description, priority, categoryId);
+
+
 
                         dbManager.AddTask(task, categoryId);
                         
@@ -96,7 +102,7 @@ namespace WindowsFormsApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd: {ex.Message}");
+                MessageBox.Show($"Wystąpił błąd add: {ex.Message}");
             }
         }
 

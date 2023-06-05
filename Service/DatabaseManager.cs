@@ -16,18 +16,18 @@ namespace WindowsFormsApp
         private SQLiteCommand command;
         public ComboBox CategoryCombobox { get; set; }
 
-        //DO USUNIĘCIA
-        public SQLiteConnection Connection
-        {
-            get { return connection; }
-            set { connection = value; }
-        }
-        //DO USUNIĘCIA
-        public SQLiteCommand Command
-        {
-            get { return command; }
-            set { command = value; }
-        }
+        ////DO USUNIĘCIA
+        //public SQLiteConnection Connection
+        //{
+        //    get { return connection; }
+        //    set { connection = value; }
+        //}
+        ////DO USUNIĘCIA
+        //public SQLiteCommand Command
+        //{
+        //    get { return command; }
+        //    set { command = value; }
+        //}
 
         public DatabaseManager(string connectionString)
         {
@@ -59,11 +59,17 @@ namespace WindowsFormsApp
                     connection.Close();
 
                     return value;
-                }                   
+
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
             }
             return 0;
         }
@@ -88,6 +94,7 @@ namespace WindowsFormsApp
                     MessageBox.Show("Użytkownik został zarejestrowany.");
                 }
                 connection.Close();
+               
 
             }
             catch (Exception ex)
@@ -132,40 +139,43 @@ namespace WindowsFormsApp
         public int GetCategoryId(string categoryName)
         {
             AddQueryParameter("@CategoryName", categoryName);
-            string selectQuery = "SELECT CategoryId FROM Categories WHERE CategoryName = @CategoryName"; // Sprawdzanie, czy nazwa kategorii istnieje w bazie danych
+            string selectQuery = "SELECT CategoryId FROM Categories WHERE CategoryName = @CategoryName";
+
             try
             {
                 connection.Open();
                 command.CommandText = selectQuery;
-
                 SQLiteDataReader reader = command.ExecuteReader();
 
+
                 if (reader != null && reader.HasRows)
-                {
-                    reader.Read();
-                    int value = reader.GetInt32(0);
-
-                    reader.Close(); // Zamknięcie SQLiteDataReader przed zmianą CommandText
-                    connection.Close();
-
-                    return value;
-                }
-                else
-                {
-                    reader?.Close(); // Zamknięcie SQLiteDataReader przed zmianą CommandText
-                    connection.Close();
-
-                    MessageBox.Show("brak takiej kategorii");
-                }
+                    {
+                        reader.Read();
+                        int value = reader.GetInt32(0);
+                        connection.Close();
+                        return value;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Brak takiej kategorii.");
+                    }
+                
             }
             catch (Exception ex)
             {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+            finally
+            {
                 connection.Close();
-                MessageBox.Show($"DB An error occurred: {ex.Message}");
             }
 
             return -1; // Jeśli nie znaleziono kategorii
         }
+
+           
+
+       
 
 
 
@@ -198,18 +208,23 @@ namespace WindowsFormsApp
             {
                 MessageBox.Show($"Wystąpił błąd DB: {ex.Message}");
             }
+            finally
+            {
+                connection.Close();
+            }
         }
 
 
         public List<Task> GetTasksByStage(string stage)
         {
             List<Task> tasks = new List<Task>();
-            string query = $"SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage='{stage}'";
+            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage=@Stage";
 
             try
             {
                 connection.Open();
                 command.CommandText = query;
+                command.Parameters.AddWithValue("@Stage", stage);
                 SQLiteDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -229,6 +244,7 @@ namespace WindowsFormsApp
 
                 reader.Close();
             }
+            
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred DB list: {ex.Message}");
@@ -240,6 +256,7 @@ namespace WindowsFormsApp
 
             return tasks;
         }
+
 
 
 
