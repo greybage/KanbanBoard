@@ -190,6 +190,41 @@ namespace WindowsFormsApp
                 connection.Close();
             }
         }
+        public void EditTask(Task task)
+        {
+            try
+            {
+                connection.Open();
+                AddQueryParameter("@UserId", task.UserID.ToString());
+                AddQueryParameter("@taskId", task.TaskID.ToString());
+                AddQueryParameter("@Name", task.Name);
+                AddQueryParameter("@Date", task.Date);
+                AddQueryParameter("@Description", task.Description);
+                AddQueryParameter("@Priority", task.Priority);
+                AddQueryParameter("@CategoryId", task.CategoryId.ToString());
+                AddQueryParameter("@Stage", task.Stage);
+
+                string updateQuery = "UPDATE Tasks SET UserId = @UserId, Name = @Name, Date = @Date, Description = @Description, " +
+                    "Priority = @Priority, CategoryId = @CategoryId, Stage = @Stage WHERE TaskID = @taskId";
+
+                command.CommandText = updateQuery;
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Task updated.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during DB edit: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
 
         public List<Task> GetTasksByStage(string stage)
         {

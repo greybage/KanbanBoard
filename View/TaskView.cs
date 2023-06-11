@@ -34,6 +34,7 @@ namespace WindowsFormsApp
             label5.Text = "task id: " + taskId;
 
             databaseManager = new DatabaseManager("Data Source=DataBase.db");
+            currentUser = user;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -97,34 +98,33 @@ namespace WindowsFormsApp
             {
                 string connectionString = "Data Source=DataBase.db;Version=3;";
 
-
                 using (DatabaseManager dbManager = new DatabaseManager(connectionString))
                 {
                     int taskID = taskId;
                     string name = txtName.Text;
                     string date = dateTimePicker.Text;
                     string description = txtDescription.Text;
-                    string priority = priorityComboBox.SelectedItem.ToString();
-                    string stage = stageComboBox.SelectedItem.ToString();
+                    string priority = priorityComboBox.SelectedItem?.ToString(); // Sprawdzanie, czy wybrana wartość nie jest null
+                    string stage = stageComboBox.SelectedItem?.ToString(); // Sprawdzanie, czy wybrana wartość nie jest null
                     int categoryId = int.Parse(categoryComboBox.SelectedValue.ToString());
                     int userID = currentUser.Id;
 
-                    if (categoryId != -1)
+                    if (categoryId != -1 && priority != null && stage != null)
                     {
-                        Task task = new Task(taskId, userID, name,  date,  description,  priority,  stage,  categoryId);
-                        dbManager.AddTask(task);
+                        Task task = new Task(taskID, userID, name, date, description, priority, stage, categoryId);
+                        dbManager.EditTask(task);
                     }
                     else
                     {
-                        MessageBox.Show("Nieprawidłowa kategoria.");
+                        MessageBox.Show("Nieprawidłowe dane.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd add: {ex.Message}");
+                MessageBox.Show($"Wystąpił błąd: {ex.Message}");
             }
-
         }
+
     }
 }
