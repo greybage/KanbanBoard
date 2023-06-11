@@ -164,7 +164,7 @@
             this.dataGridViewToDo.Name = "dataGridViewToDo";
             this.dataGridViewToDo.Size = new System.Drawing.Size(329, 176);
             this.dataGridViewToDo.TabIndex = 19;
-            this.dataGridViewToDo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewToDo_CellContentClick);
+            
             // 
             // dataGridViewInProgress
             // 
@@ -200,7 +200,7 @@
             this.button1.TabIndex = 23;
             this.button1.Text = "refresh";
             this.button1.UseVisualStyleBackColor = true;
-            //this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // MainList
             // 

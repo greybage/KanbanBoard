@@ -1,11 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Collections.Generic;
-
-
+using WindowsFormsApp.Model;
 
 namespace WindowsFormsApp
 {
@@ -16,26 +14,56 @@ namespace WindowsFormsApp
         private SQLiteCommand command;
         public ComboBox CategoryCombobox { get; set; }
 
-        ////DO USUNIĘCIA
-        //public SQLiteConnection Connection
-        //{
-        //    get { return connection; }
-        //    set { connection = value; }
-        //}
-        ////DO USUNIĘCIA
-        //public SQLiteCommand Command
-        //{
-        //    get { return command; }
-        //    set { command = value; }
-        //}
+        // Delegat dla funkcji wypełniającej combobox
+        public delegate void FillComboBoxDelegate(ComboBox comboBox);
 
         public DatabaseManager(string connectionString)
         {
             this.connectionString = connectionString;
             connection = new SQLiteConnection(connectionString);
             command = new SQLiteCommand(connection);
-
         }
+
+        public void FillComboBox(ComboBox comboBox, string query, string valueMember, string displayMember)
+        {
+            try
+            {
+                connection.Open();
+                command.CommandText = query;
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                var items = new List<ComboItemViewModel>();
+
+                while (reader.Read())
+                {
+                    string value = reader[valueMember].ToString();
+                    string name = reader[displayMember].ToString();
+                    var selectItem = new ComboItemViewModel()
+                    {
+                        Key = value,
+                        Value = name
+                    };
+                    items.Add(selectItem);
+                }
+
+                comboBox.DataSource = items;
+                comboBox.DisplayMember = "Value";
+                comboBox.ValueMember = "Key";
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while filling the combobox: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
 
         public int SelectUserId(string login, string password)
         {
@@ -56,12 +84,8 @@ namespace WindowsFormsApp
                     reader.Read();
                     int value = reader.GetInt32(0);
 
-                    connection.Close();
-
                     return value;
-
                 }
-
             }
             catch (Exception ex)
             {
@@ -73,8 +97,6 @@ namespace WindowsFormsApp
             }
             return 0;
         }
-
-       
 
         public void InsertUser(string login, string password)
         {
@@ -93,15 +115,11 @@ namespace WindowsFormsApp
                 {
                     MessageBox.Show("Użytkownik został zarejestrowany.");
                 }
-                connection.Close();
-               
-
             }
             catch (Exception ex)
             {
-                connection.Close();
                 MessageBox.Show($"An error occurred: {ex.Message}");
-            }           
+            }
         }
 
         public void RegisterUser(string login, string password)
@@ -126,7 +144,6 @@ namespace WindowsFormsApp
                 }
                 else
                 {
-                    connection.Close();
                     MessageBox.Show("Użytkownik o podanym loginie już istnieje.");
                 }
             }
@@ -134,13 +151,17 @@ namespace WindowsFormsApp
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public void AddTask(Task task)
         {
             try
             {
-                connection.Open();         
+                connection.Open();
                 AddQueryParameter("@UserId", task.UserID.ToString());
                 AddQueryParameter("@Name", task.Name);
                 AddQueryParameter("@Date", task.Date);
@@ -159,18 +180,16 @@ namespace WindowsFormsApp
                 {
                     MessageBox.Show("Task added.");
                 }
-                connection.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd DB: {ex.Message}");
+                MessageBox.Show($"An error occurred DB: {ex.Message}");
             }
             finally
             {
                 connection.Close();
             }
         }
-
 
         public List<Task> GetTasksByStage(string stage)
         {
@@ -186,7 +205,7 @@ namespace WindowsFormsApp
 
                 while (reader.Read())
                 {
-                    int taskID = int.Parse(reader.GetInt32(0).ToString());
+                    int taskId = reader.GetInt32(0);
                     string name = reader.GetString(1);
                     string date = reader.GetString(2);
                     string description = reader.GetString(3);
@@ -195,13 +214,12 @@ namespace WindowsFormsApp
                     int categoryId = int.Parse(reader.GetString(6));
                     int userId = int.Parse(reader.GetInt32(7).ToString());
 
-                    Task task = new Task(userId, name, date, description, priority, categoryId);
+                    Task task = new Task(taskId, userId, name, date, description, priority, categoryId);
                     tasks.Add(task);
                 }
 
                 reader.Close();
             }
-            
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred DB list: {ex.Message}");
@@ -214,26 +232,10 @@ namespace WindowsFormsApp
             return tasks;
         }
 
-
-
-
-
-
-
-
-
-
-
         public void AddQueryParameter(string parameterName, string value)
         {
             command.Parameters.AddWithValue(parameterName, value);
         }
-
-        
-
-
-
-
 
         public void ClearParameters()
         {
@@ -244,10 +246,6 @@ namespace WindowsFormsApp
         {
             connection.Dispose();
         }
-
-        /// //////////////////////
-
-
 
         public int ExecuteScalar(string query)
         {
@@ -301,7 +299,7 @@ namespace WindowsFormsApp
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
-                reader = null; // Ustawienie readera na null w przypadku błędu
+                reader = null;
             }
             finally
             {
@@ -310,11 +308,5 @@ namespace WindowsFormsApp
             }
             return reader;
         }
-
-        
-
-      
-
-        
     }
 }

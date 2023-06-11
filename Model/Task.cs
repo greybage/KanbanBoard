@@ -12,8 +12,9 @@
         public int UserID { get; set; }
         
 
-        public Task(int userId, string name, string date, string description, string priority, int categoryId)
+        public Task( int userId, string name, string date, string description, string priority, int categoryId)
         {
+            
             UserID = userId;
             Name = name;
             Date = date;
@@ -21,9 +22,26 @@
             Priority = priority;
             CategoryId = categoryId;
         }
-        public Task()
+        public Task(int taskId, int userId, string name, string date, string description, string priority, int categoryId)
         {
-            
+            TaskID = taskId;
+            UserID = userId;
+            Name = name;
+            Date = date;
+            Description = description;
+            Priority = priority;
+            CategoryId = categoryId;
+        }
+        public Task(int taskId, int userId, string name, string date, string description, string priority, string stage, int categoryId)
+        {
+            TaskID = taskId;
+            UserID = userId;
+            Name = name;
+            Date = date;
+            Description = description;
+            Priority = priority;
+            Stage = Stage;
+            CategoryId = categoryId;
         }
     }
 }

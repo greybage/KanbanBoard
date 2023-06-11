@@ -18,7 +18,7 @@ namespace WindowsFormsApp
         private Form loginForm;
         private Form previousForm;
         public User currentUser;
-        private DatabaseManager databaseManager;
+        
         public User GetCurrentUser()
         {
             return currentUser;
@@ -32,14 +32,71 @@ namespace WindowsFormsApp
             this.loginForm = loginForm;
 
             lblCurrentUser.Text = "Current user: " + currentUser.Login;
-            //string connectionString = "Data Source=DataBase.db;Version=3;";
-            databaseManager = new DatabaseManager("Data Source=DataBase.db");
+            
+
+            AddViewButtonColumn(dataGridViewToDo);
+            AddViewButtonColumn(dataGridViewInProgress);
+            AddViewButtonColumn(dataGridViewSuspended);
+            AddViewButtonColumn(dataGridViewDone);
         }
 
         private void MainList_Load(object sender, EventArgs e)
         {
             PopulateDataGridView();         
         }
+        private void AddViewButtonColumn(DataGridView dataGridView)
+        {
+            DataGridViewButtonColumn viewButtonColumn = new DataGridViewButtonColumn();
+            viewButtonColumn.Name = "Show";
+            viewButtonColumn.HeaderText = "Show";
+            viewButtonColumn.Text = "Show";
+            viewButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridView.Columns.Add(viewButtonColumn);
+
+            dataGridView.CellContentClick += DataGridView_CellContentClick;
+        }
+
+
+        private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewToDo.Columns["Show"].Index)
+            {
+                DataGridView dataGridView = (DataGridView)sender;
+                string gridName = dataGridView.Name;
+
+                int taskId = 0;
+
+                switch (gridName)
+                {
+                    case "dataGridViewToDo":
+                        taskId = Convert.ToInt32(dataGridViewToDo.Rows[e.RowIndex].Cells["TaskID"].Value);
+                        break;
+                    case "dataGridViewInProgress":
+                        taskId = Convert.ToInt32(dataGridViewInProgress.Rows[e.RowIndex].Cells["TaskID"].Value);
+                        break;
+                    case "dataGridViewSuspended":
+                        taskId = Convert.ToInt32(dataGridViewSuspended.Rows[e.RowIndex].Cells["TaskID"].Value);
+                        break;
+                    case "dataGridViewDone":
+                        taskId = Convert.ToInt32(dataGridViewDone.Rows[e.RowIndex].Cells["TaskID"].Value);
+                        break;
+                    default:
+                        break;
+                }
+
+                TaskView taskView = new TaskView(this, taskId, currentUser)
+                {
+                    currentUser = currentUser
+                };
+                taskView.Show();
+                this.Hide();
+            }
+        }
+
+
+
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -86,9 +143,7 @@ namespace WindowsFormsApp
 
         }
 
-        private void dataGridViewToDo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
+        
        
         private void PopulateDataGridView()
         {
@@ -120,7 +175,7 @@ namespace WindowsFormsApp
        
        public void RefreshDataGridView()
         {
-           // PopulateDataGridView();
+           PopulateDataGridView();
         }
       
 
@@ -146,6 +201,11 @@ namespace WindowsFormsApp
         private void dataGridViewSuspended_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            RefreshDataGridView();
         }
     }
 }

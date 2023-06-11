@@ -22,11 +22,14 @@ namespace WindowsFormsApp
         {
             return currentUser;
         }
+        private DatabaseManager databaseManager;
 
         public Add(Form previousForm, User user)
         {
             InitializeComponent();
-            this.previousForm = previousForm;         
+            this.previousForm = previousForm;
+
+            databaseManager = new DatabaseManager("Data Source=DataBase.db");
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -38,7 +41,7 @@ namespace WindowsFormsApp
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
-                    { 
+                    {
                         var items = new List<ComboItemViewModel>();
 
                         while (reader.Read())
@@ -59,6 +62,13 @@ namespace WindowsFormsApp
                 }
             }
 
+            //using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
+            //{
+            //    string query = "SELECT * FROM categories";
+            //    string valueMember = "id";
+            //    string displayMember = "name";
+            //    databaseManager.FillComboBox(categoryComboBox, query, valueMember, displayMember);
+            //}
             string[] priorities = { "important", "urgent", "less important", "super urgent" };
             priorityComboBox.Items.AddRange(priorities);
 
