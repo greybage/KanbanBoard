@@ -1,11 +1,11 @@
 # Projekt-Kanban-Board
-Kanban Board to aplikacja umożliwiająca organizacje zadań osobistych lub Team-owych. W zakresie działania, użytkownik będzie miał możliwość:
-a) logowania/wylogowania
-b) rejestracji
-c) dodania/usunięcia/edycji zadania
-d) ustalenia kategorii zadania
-e) ustalenia ważności zadania
-f) przegądania historii aktualnych zadań
+Kanban Board to aplikacja umożliwiająca organizacje zadań osobistych lub Team-owych. W zakresie działania, użytkownik będzie miał możliwość: <br>
+a) logowania/wylogowania <br>
+b) rejestracji <br>
+c) dodania/usunięcia/edycji zadania <br>
+d) ustalenia kategorii zadania <br>
+e) ustalenia ważności zadania <br>
+f) przegądania aktualnych zadań dla zespołu/aktualnego użytkownika <br>
 
 Kategorie zadań są tworzone bezpośrednio przez uzytkownika.
 Każde zadanie będzie możliwe do edytowania przez użytkownika.
