@@ -136,50 +136,7 @@ namespace WindowsFormsApp
             }
         }
 
-        public int GetCategoryId(string categoryName)
-        {
-            AddQueryParameter("@CategoryName", categoryName);
-            string selectQuery = "SELECT CategoryId FROM Categories WHERE CategoryName = @CategoryName";
-
-            try
-            {
-                connection.Open();
-                command.CommandText = selectQuery;
-                SQLiteDataReader reader = command.ExecuteReader();
-
-
-                if (reader != null && reader.HasRows)
-                    {
-                        reader.Read();
-                        int value = reader.GetInt32(0);
-                        connection.Close();
-                        return value;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Brak takiej kategorii.");
-                    }
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return -1; // Jeśli nie znaleziono kategorii
-        }
-
-           
-
-       
-
-
-
-        public void AddTask(Task task, int categoryId)
+        public void AddTask(Task task)
         {
             try
             {
@@ -189,7 +146,7 @@ namespace WindowsFormsApp
                 AddQueryParameter("@Date", task.Date);
                 AddQueryParameter("@Description", task.Description);
                 AddQueryParameter("@Priority", task.Priority);
-                AddQueryParameter("@CategoryId", categoryId.ToString());
+                AddQueryParameter("@CategoryId", task.CategoryId.ToString());
                 AddQueryParameter("@Stage", task.Stage);
 
                 string insertQuery = "INSERT INTO Tasks (UserId, Name, Date, Description, Priority, CategoryId, Stage) " +
@@ -229,14 +186,14 @@ namespace WindowsFormsApp
 
                 while (reader.Read())
                 {
-                    int TaskID = reader.GetInt32(0);
+                    int taskID = int.Parse(reader.GetInt32(0).ToString());
                     string name = reader.GetString(1);
                     string date = reader.GetString(2);
                     string description = reader.GetString(3);
                     string priority = reader.GetString(4);
                     string taskStage = reader.GetString(5);
-                    int categoryId = reader.GetInt32(6);
-                    int userId = reader.GetInt32(7);
+                    int categoryId = int.Parse(reader.GetString(6));
+                    int userId = int.Parse(reader.GetInt32(7).ToString());
 
                     Task task = new Task(userId, name, date, description, priority, categoryId);
                     tasks.Add(task);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using WindowsFormsApp;
-
+using WindowsFormsApp.Model;
 
 namespace WindowsFormsApp
 {
@@ -23,30 +23,38 @@ namespace WindowsFormsApp
             return currentUser;
         }
 
-
-
         public Add(Form previousForm, User user)
         {
             InitializeComponent();
-            this.previousForm = previousForm;
-            
-            
+            this.previousForm = previousForm;         
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string query = "SELECT CategoryName FROM categories";
+            string query = "SELECT * FROM categories";
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
                 connection.Open();
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
                     using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
+                    { 
+                        var items = new List<ComboItemViewModel>();
+
                         while (reader.Read())
                         {
-                            categoryComboBox.Items.Add(reader.GetValue(0));
+                            string value = reader.GetInt32(0).ToString();
+                            string name = reader.GetString(1);
+                            var seletcItem = new ComboItemViewModel()
+                            {
+                                Key = value,
+                                Value = name
+                            };
+                            items.Add(seletcItem);
                         }
+                        this.categoryComboBox.DataSource = items;
+                        this.categoryComboBox.DisplayMember = "Value";
+                        this.categoryComboBox.ValueMember = "Key";
                     }
                 }
             }
@@ -76,23 +84,13 @@ namespace WindowsFormsApp
                     string date = dateTimePicker.Text;
                     string description = txtDescription.Text;
                     string priority = priorityComboBox.SelectedItem.ToString();
-                    string categoryName = categoryComboBox.SelectedItem.ToString();
-                    int categoryId = dbManager.GetCategoryId(categoryName);
+                    int categoryId = int.Parse(categoryComboBox.SelectedValue.ToString());
                     int userID = currentUser.Id;
-                                    
-
-
 
                     if (categoryId != -1)
                     {
-
-
                         Task task = new Task(userID, name, date, description, priority, categoryId);
-
-
-
-                        dbManager.AddTask(task, categoryId);
-                        
+                        dbManager.AddTask(task);                     
                     }
                     else
                     {

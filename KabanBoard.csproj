@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ComboItemViewModel.cs" />
     <Compile Include="View\Add.cs">
       <SubType>Form</SubType>
     </Compile>

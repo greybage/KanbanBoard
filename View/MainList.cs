@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
+using System.Net.NetworkInformation;
 
 namespace WindowsFormsApp
 {
@@ -32,18 +32,14 @@ namespace WindowsFormsApp
             this.loginForm = loginForm;
 
             lblCurrentUser.Text = "Current user: " + currentUser.Login;
-
             //string connectionString = "Data Source=DataBase.db;Version=3;";
             databaseManager = new DatabaseManager("Data Source=DataBase.db");
         }
 
         private void MainList_Load(object sender, EventArgs e)
         {
-            // PopulateDataGridView();
-            
+            PopulateDataGridView();         
         }
-
-        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -92,7 +88,6 @@ namespace WindowsFormsApp
 
         private void dataGridViewToDo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
        
         private void PopulateDataGridView()
