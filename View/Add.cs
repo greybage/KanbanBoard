@@ -99,7 +99,15 @@ namespace WindowsFormsApp
 
                     if (categoryId != -1)
                     {
-                        Task task = new Task(userID, name, date, description, priority, categoryId);
+                        Task task = new Task
+                        {
+                            Name = name,
+                            Date= date,
+                            Description = description,
+                            Priority = priority,
+                            CategoryId = categoryId,
+                            UserID= userID
+                        };
                         dbManager.AddTask(task);                     
                     }
                     else

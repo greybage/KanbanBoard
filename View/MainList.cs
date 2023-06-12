@@ -42,7 +42,8 @@ namespace WindowsFormsApp
 
         private void MainList_Load(object sender, EventArgs e)
         {
-            PopulateDataGridView();         
+            PopulateDataGridView();        
+            
         }
         private void AddViewButtonColumn(DataGridView dataGridView)
         {
@@ -94,7 +95,21 @@ namespace WindowsFormsApp
         }
 
 
+        private void dataGridViewToDo_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dataGridViewToDo.Columns[e.ColumnIndex].Name == "Date") // Zmień "Date" na nazwę kolumny zawierającej datę
+            {
+                if (e.Value != null && e.Value is DateTime)
+                {
+                    DateTime date = (DateTime)e.Value;
 
+                    if (date < DateTime.Today) // Sprawdź, czy data jest przeterminowana
+                    {
+                        e.CellStyle.BackColor = Color.Red; // Ustaw kolor tła na czerwony
+                    }
+                }
+            }
+        }
 
 
 
@@ -123,9 +138,29 @@ namespace WindowsFormsApp
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CurrentUserTasks_Click(object sender, EventArgs e)
         {
-            
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
+            {
+                int userID = currentUser.Id; // Pobierz identyfikator zalogowanego użytkownika
+
+                List<Task> tasksToDo = databaseManager.GetTasksByStageForUser("ToDo", userID);
+                dataGridViewToDo.DataSource = tasksToDo.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewToDo.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksInProgress = databaseManager.GetTasksByStageForUser("InProgress", userID);
+                dataGridViewInProgress.DataSource = tasksInProgress.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewInProgress.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksSuspended = databaseManager.GetTasksByStageForUser("Suspended", userID);
+                dataGridViewSuspended.DataSource = tasksSuspended.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewSuspended.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksDone = databaseManager.GetTasksByStageForUser("Done", userID);
+                dataGridViewDone.DataSource = tasksDone.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewDone.Columns["TaskID"].Visible = false;
+            }
+
         }
 
         private void LogOutbtn_Click(object sender, EventArgs e)
@@ -143,27 +178,30 @@ namespace WindowsFormsApp
 
         }
 
-        
-       
+
+
         private void PopulateDataGridView()
         {
-
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
                 List<Task> tasksToDo = databaseManager.GetTasksByStage("ToDo");
-                dataGridViewToDo.DataSource = tasksToDo;
+                dataGridViewToDo.DataSource = tasksToDo.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewToDo.Columns["TaskID"].Visible = false;
 
                 List<Task> tasksInProgress = databaseManager.GetTasksByStage("InProgress");
-                dataGridViewInProgress.DataSource = tasksInProgress;
+                dataGridViewInProgress.DataSource = tasksInProgress.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewInProgress.Columns["TaskID"].Visible = false;
 
                 List<Task> tasksSuspended = databaseManager.GetTasksByStage("Suspended");
-                dataGridViewSuspended.DataSource = tasksSuspended;
+                dataGridViewSuspended.DataSource = tasksSuspended.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewSuspended.Columns["TaskID"].Visible = false;
 
                 List<Task> tasksDone = databaseManager.GetTasksByStage("Done");
-                dataGridViewDone.DataSource = tasksDone;
+                dataGridViewDone.DataSource = tasksDone.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewDone.Columns["TaskID"].Visible = false;
             }
-
         }
+
 
 
         private void Categoriesbtn_Click_1(object sender, EventArgs e)
@@ -206,6 +244,11 @@ namespace WindowsFormsApp
         private void button1_Click_1(object sender, EventArgs e)
         {
             RefreshDataGridView();
+        }
+
+        private void TeamTasksbtn_Click(object sender, EventArgs e)
+        {
+            PopulateDataGridView();
         }
     }
 }

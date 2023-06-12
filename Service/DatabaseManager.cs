@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp.Model;
 
@@ -23,47 +24,6 @@ namespace WindowsFormsApp
             connection = new SQLiteConnection(connectionString);
             command = new SQLiteCommand(connection);
         }
-
-        public void FillComboBox(ComboBox comboBox, string query, string valueMember, string displayMember)
-        {
-            try
-            {
-                connection.Open();
-                command.CommandText = query;
-                SQLiteDataReader reader = command.ExecuteReader();
-
-                var items = new List<ComboItemViewModel>();
-
-                while (reader.Read())
-                {
-                    string value = reader[valueMember].ToString();
-                    string name = reader[displayMember].ToString();
-                    var selectItem = new ComboItemViewModel()
-                    {
-                        Key = value,
-                        Value = name
-                    };
-                    items.Add(selectItem);
-                }
-
-                comboBox.DataSource = items;
-                comboBox.DisplayMember = "Value";
-                comboBox.ValueMember = "Key";
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while filling the combobox: {ex.Message}");
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-
-
 
         public int SelectUserId(string login, string password)
         {
@@ -249,7 +209,17 @@ namespace WindowsFormsApp
                     int categoryId = int.Parse(reader.GetString(6));
                     int userId = int.Parse(reader.GetInt32(7).ToString());
 
-                    Task task = new Task(taskId, userId, name, date, description, priority, categoryId);
+                    Task task = new Task
+                    {
+                        TaskID= taskId,
+                        Name = name,
+                        Date= date,
+                        Description = description,
+                        Priority = priority,
+                        CategoryId = categoryId,
+                        UserID= userId,
+                        Stage= taskStage
+                    };
                     tasks.Add(task);
                 }
 
@@ -266,6 +236,170 @@ namespace WindowsFormsApp
 
             return tasks;
         }
+
+        public List<Task> GetTasksByStageForUser(string stage, int userID)
+        {
+            List<Task> tasks = new List<Task>();
+            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage=@Stage AND UserId=@UserID";
+
+            try
+            {
+                connection.Open();
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@Stage", stage);
+                command.Parameters.AddWithValue("@UserID", userID);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int taskId = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    string date = reader.GetString(2);
+                    string description = reader.GetString(3);
+                    string priority = reader.GetString(4);
+                    string taskStage = reader.GetString(5);
+                    int categoryId = int.Parse(reader.GetString(6));
+                    int userId = int.Parse(reader.GetInt32(7).ToString());
+
+                    Task task = new Task
+                    {
+                        TaskID = taskId,
+                        Name = name,
+                        Date = date,
+                        Description = description,
+                        Priority = priority,
+                        CategoryId = categoryId,
+                        UserID = userId,
+                        Stage = taskStage
+                    };
+                    tasks.Add(task);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during DB list: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tasks;
+        }
+
+
+        public Task GetTasksById(int Id)
+        {
+            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE TaskId=@taskId";
+            Task task = null;
+            try
+            {
+                connection.Open();
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@taskId", Id);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int taskId = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    string date = reader.GetString(2);
+                    string description = reader.GetString(3);
+                    string priority = reader.GetString(4);
+                    string taskStage = reader.GetString(5);
+                    int categoryId = int.Parse(reader.GetString(6));
+                    int userId = int.Parse(reader.GetInt32(7).ToString());
+
+                    task = new Task
+                    {
+                        TaskID= taskId,
+                        Name = name,
+                        Date= date,
+                        Description = description,
+                        Priority = priority,
+                        CategoryId = categoryId,
+                        UserID = userId,
+                        Stage = taskStage
+                    };
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred DB list: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return task;
+        }
+        public void DeleteTask(int taskId)
+        {
+            try
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM Tasks WHERE TaskID = @TaskId";
+
+                using (SQLiteCommand command = new SQLiteCommand(deleteQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@TaskId", taskId);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Wystąpił błąd podczas usuwania zadania: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
+
+        public List<Category> GetCategories()
+        {
+            string query = "SELECT * FROM categories";
+            List<Category> categories = new List<Category>();
+            try
+            {
+                connection.Open();
+                command.CommandText = query;
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int value = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+
+                    var category = new Category
+                    {
+                        CategoryID = value,
+                        CategoryName = name
+                    };
+                    categories.Add(category);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred DB list: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return categories;
+        }
+
 
         public void AddQueryParameter(string parameterName, string value)
         {

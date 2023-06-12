@@ -10,11 +10,5 @@ namespace WindowsFormsApp
     {
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
-
-        public Category(int categoryId, string categoryname)
-        {
-            CategoryID = categoryId;
-            CategoryName = categoryname;
-        }
     }
 }
