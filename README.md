@@ -14,6 +14,8 @@ komunikacja z baza w odzielnej klasie
 daty-pokazywanie przeterminowanych zadan  
 definicja obiektów task i kategoria
 nastepne zajecia 22.05 ostateczne ustalenie zakresu
-znajomosc calej aplikacji
+znajomosc calej aplikacji <bR>
+  przeterminowane zadania, pokazywanie ile przeterminowane (nie mnusi być koloorwe)
+  filtrowanie po kategoriach, priorytetach
 
 
