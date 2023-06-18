@@ -5,6 +5,9 @@ using System.Data.SQLite;
 using WindowsFormsApp.Model;
 using System.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Globalization;
+using System.Drawing;
+
 
 namespace WindowsFormsApp
 {
@@ -48,6 +51,10 @@ namespace WindowsFormsApp
             string[] stages = { "ToDo", "InProgress", "Suspended", "Done" };
             stageComboBox.Items.AddRange(stages);
 
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "yyyy.MM.dd";
+
+
 
             var categoriesComboboxItems = databaseManager.GetCategories().Select(x => new ComboItemViewModel
             {
@@ -66,8 +73,47 @@ namespace WindowsFormsApp
             priorityComboBox.SelectedIndex = priorityComboBox.Items.IndexOf(task.Priority);
             stageComboBox.SelectedIndex = stageComboBox.Items.IndexOf(task.Stage);
 
-            //deleteButton.Click += deleteButton_Click;
+         
+            DateTime taskDate;
+            if (DateTime.TryParseExact(task.Date, "yyyy.MM.dd", System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None, out taskDate))
+            {
+                int daysRemaining = (taskDate - DateTime.Today).Days;
+                int daysExpired = (DateTime.Today - taskDate).Days;
+
+                if (daysRemaining >= 0)
+                {
+                    lblDaysRemaining.Text = $"Pozostało: {daysRemaining} dni";
+                    lblDaysExpired.Text = "";
+                    lblDaysRemaining.ForeColor = Color.Green;
+                }
+                else
+                {
+                    lblDaysRemaining.Text = "";
+                    lblDaysExpired.Text = $"Przeterminowane o: {Math.Abs(daysExpired)} dni";
+                    lblDaysExpired.ForeColor = Color.Red;
+                }
+            }
+            else
+            {
+                lblDaysRemaining.Text = "";
+                lblDaysRemaining.ForeColor = DefaultForeColor;
+                lblDaysExpired.Text = "";
+            }
         }
+        private DateTime? ParseTaskDate(string dateString)
+        {
+            DateTime parsedDate;
+            if (DateTime.TryParseExact(dateString, "yyyy.MM.dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+            {
+                return parsedDate;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
 
         private void backbtn_Click(object sender, EventArgs e)
         {

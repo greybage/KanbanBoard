@@ -42,6 +42,8 @@ namespace WindowsFormsApp
             AddViewButtonColumn(dataGridViewDone);
 
             databaseManager = new DatabaseManager("Data Source=DataBase.db");
+
+            PopulateDataGridView();
         }
 
         private void MainList_Load(object sender, EventArgs e)

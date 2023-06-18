@@ -44,6 +44,8 @@
             this.stageComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.lblDaysExpired = new System.Windows.Forms.Label();
+            this.lblDaysRemaining = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // backbtn
@@ -185,7 +187,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(464, 34);
+            this.label5.Location = new System.Drawing.Point(225, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 27;
@@ -199,12 +201,32 @@
             this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker.TabIndex = 28;
             // 
+            // lblDaysExpired
+            // 
+            this.lblDaysExpired.AutoSize = true;
+            this.lblDaysExpired.Location = new System.Drawing.Point(365, 12);
+            this.lblDaysExpired.Name = "lblDaysExpired";
+            this.lblDaysExpired.Size = new System.Drawing.Size(35, 13);
+            this.lblDaysExpired.TabIndex = 30;
+            this.lblDaysExpired.Text = "label9";
+            // 
+            // lblDaysRemaining
+            // 
+            this.lblDaysRemaining.AutoSize = true;
+            this.lblDaysRemaining.Location = new System.Drawing.Point(365, 38);
+            this.lblDaysRemaining.Name = "lblDaysRemaining";
+            this.lblDaysRemaining.Size = new System.Drawing.Size(35, 13);
+            this.lblDaysRemaining.TabIndex = 31;
+            this.lblDaysRemaining.Text = "label9";
+            // 
             // TaskView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblDaysRemaining);
+            this.Controls.Add(this.lblDaysExpired);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.stageComboBox);
@@ -246,5 +268,7 @@
         private System.Windows.Forms.ComboBox stageComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label lblDaysExpired;
+        private System.Windows.Forms.Label lblDaysRemaining;
     }
 }
