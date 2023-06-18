@@ -48,6 +48,7 @@ namespace WindowsFormsApp
             string[] stages = { "ToDo", "InProgress", "Suspended", "Done" };
             stageComboBox.Items.AddRange(stages);
 
+
             var categoriesComboboxItems = databaseManager.GetCategories().Select(x => new ComboItemViewModel
             {
                 Key = x.CategoryID.ToString(),
@@ -150,5 +151,9 @@ namespace WindowsFormsApp
             }
         }
 
+        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

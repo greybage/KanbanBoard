@@ -337,6 +337,113 @@ namespace WindowsFormsApp
             }
             return task;
         }
+
+
+
+        public List<Task> GetTasksByPriority(string stage, string Priority)
+        {
+            List<Task> tasks = new List<Task>();
+            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage=@Stage AND Priority=@Priority";
+
+            try
+            {
+                connection.Open();
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@Stage", stage);
+                command.Parameters.AddWithValue("@Priority", Priority);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int taskId = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    string date = reader.GetString(2);
+                    string description = reader.GetString(3);
+                    string priority = reader.GetString(4);
+                    string taskStage = reader.GetString(5);
+                    int categoryId = int.Parse(reader.GetString(6));
+                    int userId = int.Parse(reader.GetInt32(7).ToString());
+
+                    Task task = new Task
+                    {
+                        TaskID = taskId,
+                        Name = name,
+                        Date = date,
+                        Description = description,
+                        Priority = priority,
+                        CategoryId = categoryId,
+                        UserID = userId,
+                        Stage = taskStage
+                    };
+                    tasks.Add(task);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during DB list: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tasks;
+        }
+
+        public List<Task> GetTasksByCategory(string stage, int CategoryId)
+        {
+            List<Task> tasks = new List<Task>();
+            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage=@Stage AND CategoryId=@CategoryId";
+
+            try
+            {
+                connection.Open();
+                command.CommandText = query;
+                command.Parameters.AddWithValue("@Stage", stage);
+                command.Parameters.AddWithValue("@CategoryId", CategoryId);
+                SQLiteDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int taskId = reader.GetInt32(0);
+                    string name = reader.GetString(1);
+                    string date = reader.GetString(2);
+                    string description = reader.GetString(3);
+                    string priority = reader.GetString(4);
+                    string taskStage = reader.GetString(5);
+                    int categoryId = int.Parse(reader.GetString(6));
+                    int userId = int.Parse(reader.GetInt32(7).ToString());
+
+                    Task task = new Task
+                    {
+                        TaskID = taskId,
+                        Name = name,
+                        Date = date,
+                        Description = description,
+                        Priority = priority,
+                        CategoryId = categoryId,
+                        UserID = userId,
+                        Stage = taskStage
+                    };
+                    tasks.Add(task);
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred during DB list: {ex.Message}");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tasks;
+        }
+
         public void DeleteTask(int taskId)
         {
             try

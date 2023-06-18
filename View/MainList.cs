@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Net.NetworkInformation;
+using WindowsFormsApp.Model;
 
 namespace WindowsFormsApp
 {
@@ -23,6 +24,7 @@ namespace WindowsFormsApp
         {
             return currentUser;
         }
+        private DatabaseManager databaseManager;
 
         public MainList(Form previousForm, Login loginForm, User user)
         {
@@ -38,12 +40,28 @@ namespace WindowsFormsApp
             AddViewButtonColumn(dataGridViewInProgress);
             AddViewButtonColumn(dataGridViewSuspended);
             AddViewButtonColumn(dataGridViewDone);
+
+            databaseManager = new DatabaseManager("Data Source=DataBase.db");
         }
 
         private void MainList_Load(object sender, EventArgs e)
         {
-            PopulateDataGridView();        
-            
+            PopulateDataGridView();
+
+            databaseManager = new DatabaseManager("Data Source=DataBase.db");
+
+            var categoriesComboboxItems = databaseManager.GetCategories().Select(x => new ComboItemViewModel
+            {
+                Key = x.CategoryID.ToString(),
+                Value = x.CategoryName
+            }).ToList();
+            categoryComboBox.DataSource = categoriesComboboxItems;
+            categoryComboBox.DisplayMember = "Value";
+            categoryComboBox.ValueMember = "Key";
+
+            string[] priorities = { "important", "urgent", "less important", "super urgent" };
+            priorityComboBox.Items.AddRange(priorities);
+
         }
         private void AddViewButtonColumn(DataGridView dataGridView)
         {
@@ -202,7 +220,55 @@ namespace WindowsFormsApp
             }
         }
 
+        private void SelectByPrioritybtn_Click(object sender, EventArgs e)
+        {
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
+            {
+                string Priority = priorityComboBox.SelectedItem.ToString(); 
 
+                List<Task> tasksToDo = databaseManager.GetTasksByPriority("ToDo", Priority);
+                dataGridViewToDo.DataSource = tasksToDo.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewToDo.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksInProgress = databaseManager.GetTasksByPriority("InProgress", Priority);
+                dataGridViewInProgress.DataSource = tasksInProgress.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewInProgress.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksSuspended = databaseManager.GetTasksByPriority("Suspended", Priority);
+                dataGridViewSuspended.DataSource = tasksSuspended.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewSuspended.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksDone = databaseManager.GetTasksByPriority("Done", Priority);
+                dataGridViewDone.DataSource = tasksDone.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewDone.Columns["TaskID"].Visible = false;
+            }
+
+        }
+        private void SelectByCategorybtn_Click(object sender, EventArgs e)
+        {
+
+            using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
+            {
+                int CategoryId = int.Parse(categoryComboBox.SelectedValue.ToString());
+
+                List<Task> tasksToDo = databaseManager.GetTasksByCategory("ToDo", CategoryId);
+                dataGridViewToDo.DataSource = tasksToDo.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewToDo.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksInProgress = databaseManager.GetTasksByCategory("InProgress", CategoryId);
+                dataGridViewInProgress.DataSource = tasksInProgress.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewInProgress.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksSuspended = databaseManager.GetTasksByCategory("Suspended", CategoryId);
+                dataGridViewSuspended.DataSource = tasksSuspended.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewSuspended.Columns["TaskID"].Visible = false;
+
+                List<Task> tasksDone = databaseManager.GetTasksByCategory("Done", CategoryId);
+                dataGridViewDone.DataSource = tasksDone.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
+                dataGridViewDone.Columns["TaskID"].Visible = false;
+            }
+
+        }
 
         private void Categoriesbtn_Click_1(object sender, EventArgs e)
         {
@@ -250,6 +316,8 @@ namespace WindowsFormsApp
         {
             PopulateDataGridView();
         }
+
+        
     }
 }
 
