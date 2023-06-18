@@ -395,7 +395,7 @@ namespace WindowsFormsApp
         public List<Task> GetTasksByCategory(string stage, int CategoryId)
         {
             List<Task> tasks = new List<Task>();
-            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage=@Stage AND CategoryId=@CategoryId";
+            string query = "SELECT TaskID, Name, Date, Description, Priority, Stage, CategoryId, UserId FROM tasks WHERE Stage=@Stage AND categoryId=@CategoryId";
 
             try
             {

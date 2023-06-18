@@ -59,6 +59,8 @@ namespace WindowsFormsApp
             categoryComboBox.DisplayMember = "Value";
             categoryComboBox.ValueMember = "Key";
 
+          
+
             string[] priorities = { "important", "urgent", "less important", "super urgent" };
             priorityComboBox.Items.AddRange(priorities);
 
@@ -249,21 +251,21 @@ namespace WindowsFormsApp
 
             using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
             {
-                int CategoryId = int.Parse(categoryComboBox.SelectedValue.ToString());
+                int categoryId = int.Parse(categoryComboBox.SelectedValue.ToString());
 
-                List<Task> tasksToDo = databaseManager.GetTasksByCategory("ToDo", CategoryId);
+                List<Task> tasksToDo = databaseManager.GetTasksByCategory("ToDo", categoryId);
                 dataGridViewToDo.DataSource = tasksToDo.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
                 dataGridViewToDo.Columns["TaskID"].Visible = false;
 
-                List<Task> tasksInProgress = databaseManager.GetTasksByCategory("InProgress", CategoryId);
+                List<Task> tasksInProgress = databaseManager.GetTasksByCategory("InProgress", categoryId);
                 dataGridViewInProgress.DataSource = tasksInProgress.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
                 dataGridViewInProgress.Columns["TaskID"].Visible = false;
 
-                List<Task> tasksSuspended = databaseManager.GetTasksByCategory("Suspended", CategoryId);
+                List<Task> tasksSuspended = databaseManager.GetTasksByCategory("Suspended", categoryId);
                 dataGridViewSuspended.DataSource = tasksSuspended.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
                 dataGridViewSuspended.Columns["TaskID"].Visible = false;
 
-                List<Task> tasksDone = databaseManager.GetTasksByCategory("Done", CategoryId);
+                List<Task> tasksDone = databaseManager.GetTasksByCategory("Done", categoryId);
                 dataGridViewDone.DataSource = tasksDone.Select(t => new { t.Name, t.Date, t.Priority, t.CategoryId, t.TaskID }).ToList();
                 dataGridViewDone.Columns["TaskID"].Visible = false;
             }
@@ -317,7 +319,10 @@ namespace WindowsFormsApp
             PopulateDataGridView();
         }
 
-        
+        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -34,6 +34,10 @@ namespace WindowsFormsApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
+
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "dd.MM.yyyy";
+
             var categoriesComboboxItems = databaseManager.GetCategories().Select(x => new ComboItemViewModel
             {
                 Key = x.CategoryID.ToString(),
