@@ -34,41 +34,19 @@ namespace WindowsFormsApp
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM categories";
-            using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
+
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "yyyy.MM.dd";
+
+            var categoriesComboboxItems = databaseManager.GetCategories().Select(x => new ComboItemViewModel
             {
-                connection.Open();
-                using (SQLiteCommand command = new SQLiteCommand(query, connection))
-                {
-                    using (SQLiteDataReader reader = command.ExecuteReader())
-                    {
-                        var items = new List<ComboItemViewModel>();
+                Key = x.CategoryID.ToString(),
+                Value = x.CategoryName
+            }).ToList();
+            categoryComboBox.DataSource = categoriesComboboxItems;
+            categoryComboBox.DisplayMember = "Value";
+            categoryComboBox.ValueMember = "Key";
 
-                        while (reader.Read())
-                        {
-                            string value = reader.GetInt32(0).ToString();
-                            string name = reader.GetString(1);
-                            var seletcItem = new ComboItemViewModel()
-                            {
-                                Key = value,
-                                Value = name
-                            };
-                            items.Add(seletcItem);
-                        }
-                        this.categoryComboBox.DataSource = items;
-                        this.categoryComboBox.DisplayMember = "Value";
-                        this.categoryComboBox.ValueMember = "Key";
-                    }
-                }
-            }
-
-            //using (DatabaseManager databaseManager = new DatabaseManager("Data Source=DataBase.db"))
-            //{
-            //    string query = "SELECT * FROM categories";
-            //    string valueMember = "id";
-            //    string displayMember = "name";
-            //    databaseManager.FillComboBox(categoryComboBox, query, valueMember, displayMember);
-            //}
             string[] priorities = { "important", "urgent", "less important", "super urgent" };
             priorityComboBox.Items.AddRange(priorities);
 

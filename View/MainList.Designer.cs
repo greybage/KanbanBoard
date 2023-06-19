@@ -43,6 +43,12 @@
             this.dataGridViewSuspended = new System.Windows.Forms.DataGridView();
             this.dataGridViewDone = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.priorityComboBox = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.SelectByPrioritybtn = new System.Windows.Forms.Button();
+            this.SelectByCategorybtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToDo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInProgress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSuspended)).BeginInit();
@@ -54,7 +60,7 @@
             this.to.AutoSize = true;
             this.to.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.to.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.to.Location = new System.Drawing.Point(9, 75);
+            this.to.Location = new System.Drawing.Point(12, 75);
             this.to.Name = "to";
             this.to.Size = new System.Drawing.Size(95, 31);
             this.to.TabIndex = 0;
@@ -161,7 +167,7 @@
             // dataGridViewToDo
             // 
             this.dataGridViewToDo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewToDo.Location = new System.Drawing.Point(12, 109);
+            this.dataGridViewToDo.Location = new System.Drawing.Point(7, 109);
             this.dataGridViewToDo.Name = "dataGridViewToDo";
             this.dataGridViewToDo.Size = new System.Drawing.Size(539, 176);
             this.dataGridViewToDo.TabIndex = 19;
@@ -194,7 +200,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 39);
+            this.button1.Location = new System.Drawing.Point(836, 68);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 23;
@@ -202,12 +208,73 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // priorityComboBox
+            // 
+            this.priorityComboBox.FormattingEnabled = true;
+            this.priorityComboBox.Location = new System.Drawing.Point(225, 5);
+            this.priorityComboBox.Name = "priorityComboBox";
+            this.priorityComboBox.Size = new System.Drawing.Size(121, 21);
+            this.priorityComboBox.TabIndex = 24;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(137, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 13);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "select by priority";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(137, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "select by categories";
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(244, 29);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(121, 21);
+            this.categoryComboBox.TabIndex = 28;
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
+            // 
+            // SelectByPrioritybtn
+            // 
+            this.SelectByPrioritybtn.Location = new System.Drawing.Point(352, 4);
+            this.SelectByPrioritybtn.Name = "SelectByPrioritybtn";
+            this.SelectByPrioritybtn.Size = new System.Drawing.Size(175, 23);
+            this.SelectByPrioritybtn.TabIndex = 29;
+            this.SelectByPrioritybtn.Text = "Selecy by priority";
+            this.SelectByPrioritybtn.UseVisualStyleBackColor = true;
+            this.SelectByPrioritybtn.Click += new System.EventHandler(this.SelectByPrioritybtn_Click);
+            // 
+            // SelectByCategorybtn
+            // 
+            this.SelectByCategorybtn.Location = new System.Drawing.Point(371, 29);
+            this.SelectByCategorybtn.Name = "SelectByCategorybtn";
+            this.SelectByCategorybtn.Size = new System.Drawing.Size(175, 23);
+            this.SelectByCategorybtn.TabIndex = 30;
+            this.SelectByCategorybtn.Text = "Selecy by category";
+            this.SelectByCategorybtn.UseVisualStyleBackColor = true;
+            this.SelectByCategorybtn.Click += new System.EventHandler(this.SelectByCategorybtn_Click);
+            // 
             // MainList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1102, 508);
+            this.Controls.Add(this.SelectByCategorybtn);
+            this.Controls.Add(this.SelectByPrioritybtn);
+            this.Controls.Add(this.categoryComboBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.priorityComboBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewDone);
             this.Controls.Add(this.dataGridViewSuspended);
@@ -252,6 +319,12 @@
         private System.Windows.Forms.DataGridView dataGridViewSuspended;
         private System.Windows.Forms.DataGridView dataGridViewDone;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox priorityComboBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.Button SelectByPrioritybtn;
+        private System.Windows.Forms.Button SelectByCategorybtn;
     }
 }
 
